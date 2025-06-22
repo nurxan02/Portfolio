@@ -686,18 +686,18 @@ b span {
 .hero-bg-text {
   position: absolute;
 
-  top: -20%;
+  top: -52%;
   left: 0;
   width: 400vw;
   white-space: nowrap;
   overflow: hidden;
   font-family: SF Pro Display, Arial, sans-serif;
-  font-size: 800px;
+  font-size: 1100px;
   font-weight: 900;
   letter-spacing: -0.05em;
   color: rgba(255, 255, 255, 0.07);
   color: transparent;
-  -webkit-text-stroke: 3px rgba(255, 255, 255, 0.13);
+  -webkit-text-stroke: 4px rgba(255, 255, 255, 0.13);
   text-stroke: 3px rgba(255, 255, 255, 0.13);
   text-transform: uppercase;
   z-index: 0;
