@@ -28,7 +28,9 @@ const observer = new IntersectionObserver((entries) => {
 
 // Add fade-in class to elements and observe them
 document
-  .querySelectorAll(".skill-category, .timeline-item, .stat-item")
+  .querySelectorAll(
+    ".skill-category, .timeline-item, .stat-item, .spotify-container"
+  )
   .forEach((el) => {
     el.classList.add("fade-in");
     observer.observe(el);
