@@ -223,3 +223,170 @@ document.addEventListener("DOMContentLoaded", () => {
   const mobileNav = new MobileNavigation();
   window.mobileNav = mobileNav; // Make it globally accessible for debugging
 });
+
+// Contact Form Enhancement
+class ContactForm {
+  constructor() {
+    this.form = document.getElementById("contactForm");
+    this.submitBtn = document.getElementById("submitBtn");
+    this.messageDiv = document.getElementById("formMessage");
+    this.originalBtnText = "Send Message";
+
+    this.init();
+  }
+
+  init() {
+    if (this.form) {
+      this.form.addEventListener("submit", (e) => {
+        this.handleSubmit(e);
+      });
+
+      // Add real-time validation
+      this.addValidation();
+
+      // Add intersection observer for form animation
+      this.addScrollAnimation();
+    }
+  }
+
+  addValidation() {
+    const inputs = this.form.querySelectorAll("input, textarea");
+
+    inputs.forEach((input) => {
+      input.addEventListener("blur", () => {
+        this.validateField(input);
+      });
+
+      input.addEventListener("input", () => {
+        this.clearFieldError(input);
+      });
+    });
+  }
+
+  validateField(field) {
+    const value = field.value.trim();
+    let isValid = true;
+
+    if (field.hasAttribute("required") && !value) {
+      isValid = false;
+    }
+
+    if (field.type === "email" && value) {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      isValid = emailRegex.test(value);
+    }
+
+    if (!isValid) {
+      field.style.borderColor = "#ef4444";
+      field.style.boxShadow = "0 0 0 4px rgba(239, 68, 68, 0.1)";
+    }
+  }
+
+  clearFieldError(field) {
+    field.style.borderColor = "#e5e7eb";
+    field.style.boxShadow = "none";
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+
+    // Show loading state
+    this.setLoadingState(true);
+
+    // Create FormData
+    const formData = new FormData(this.form);
+
+    // Submit form
+    fetch(this.form.action, {
+      method: "POST",
+      body: formData,
+      headers: {
+        Accept: "application/json",
+      },
+    })
+      .then((response) => {
+        if (response.ok) {
+          this.showMessage(
+            "Thank you! Your message has been sent successfully. I'll get back to you soon.",
+            "success"
+          );
+          this.form.reset();
+        } else {
+          throw new Error("Network response was not ok");
+        }
+      })
+      .catch((error) => {
+        this.showMessage(
+          "Oops! Something went wrong. Please try again or email me directly.",
+          "error"
+        );
+      })
+      .finally(() => {
+        this.setLoadingState(false);
+      });
+  }
+
+  setLoadingState(loading) {
+    if (loading) {
+      this.submitBtn.classList.add("loading");
+      this.submitBtn.textContent = "Sending...";
+      this.submitBtn.disabled = true;
+    } else {
+      this.submitBtn.classList.remove("loading");
+      this.submitBtn.textContent = this.originalBtnText;
+      this.submitBtn.disabled = false;
+    }
+  }
+
+  showMessage(text, type) {
+    this.messageDiv.textContent = text;
+    this.messageDiv.className = `form-message ${type}`;
+    this.messageDiv.classList.add("show");
+
+    // Auto hide after 15 seconds
+    setTimeout(() => {
+      this.messageDiv.classList.remove("show");
+    }, 5000);
+  }
+
+  addScrollAnimation() {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = "1";
+            entry.target.style.transform = "translateY(0)";
+          }
+        });
+      },
+      {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px",
+      }
+    );
+
+    // Animate form container
+    const formContainer = document.querySelector(".contact-form-container");
+    if (formContainer) {
+      formContainer.style.opacity = "0";
+      formContainer.style.transform = "translateY(30px)";
+      formContainer.style.transition = "opacity 0.6s ease, transform 0.6s ease";
+      observer.observe(formContainer);
+    }
+
+    // Animate form header
+    const formHeader = document.querySelector(".form-header");
+    if (formHeader) {
+      formHeader.style.opacity = "0";
+      formHeader.style.transform = "translateY(20px)";
+      formHeader.style.transition = "opacity 0.6s ease, transform 0.6s ease";
+      setTimeout(() => observer.observe(formHeader), 200);
+    }
+  }
+}
+
+// Initialize contact form when DOM is loaded
+document.addEventListener("DOMContentLoaded", () => {
+  const contactForm = new ContactForm();
+  window.contactForm = contactForm; // Make it globally accessible
+});
