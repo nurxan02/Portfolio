@@ -29,7 +29,7 @@
 }
 
 .projects .section-title span {
-  color: rgba(213, 213, 213, 0.8);
+  color: rgba(255, 255, 255, 0.8);
 }
 
 .projects .section-title span a {
@@ -474,7 +474,9 @@
     transform: translateX(-30px) scale(0.95);
   }
 }
-
+.breath {
+  animation: github-breath 4s ease-in-out infinite;
+}
 @keyframes github-breath {
   0%,
   100% {
