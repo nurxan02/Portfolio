@@ -223,7 +223,7 @@
 }
 
 .tech {
-  background: #667eea;
+  background: linear-gradient(90deg, #667eea 0%, #a855f7 80%);
   color: white;
   padding: 6px 12px;
   border-radius: 20px;
