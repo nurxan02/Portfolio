@@ -1056,11 +1056,14 @@ b span {
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    padding-top: 50px;
+    padding-top: 5px;
     transition: left 0.3s ease;
     z-index: 1000;
     border-top: 1px solid rgba(0, 0, 0, 0.1);
     overflow: scroll;
+  }
+  .nav-links li:last-child {
+    display: none;
   }
 
   .nav-links.active {
@@ -1068,7 +1071,7 @@ b span {
   }
 
   .nav-links li {
-    margin: 15px 0;
+    margin: 0px 0px;
     opacity: 0;
     transform: translateY(20px);
     transition: all 0.3s ease;
