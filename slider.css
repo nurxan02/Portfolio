@@ -29,21 +29,21 @@
 }
 
 .projects .section-title span {
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(213, 213, 213, 0.8);
 }
 
 .projects .section-title span a {
-  color: #a855f7;
+  color: hsl(271, 100%, 80%);
   text-decoration: none;
   transition: color 0.3s ease;
 }
 
 .projects .section-title span a:hover {
-  color: #c084fc;
+  color: #0cd5e3;
 }
 
 .slider-container {
-  max-width: 1000px;
+  max-width: 2000px;
   margin: 0 auto;
   position: relative;
 }
@@ -102,14 +102,15 @@
   color: white;
   font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, sans-serif;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-  transform: perspective(1000px) rotateY(-5deg);
+  transform: perspective(1000px) rotateY(-12deg);
   transition: transform 0.3s ease;
+  /* animation: github-breath 4s ease-in-out infinite; */
 }
 
 .github-mock:hover {
-  transform: perspective(1000px) rotateY(0deg);
+  transform: perspective(1000px) rotateY(12deg) scale(1.05) translateX(40px)
+    rotateX(-5deg);
 }
-
 .github-header {
   background: #21262d;
   padding: 15px 20px;
@@ -298,6 +299,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  text-align: center;
 }
 
 .prev-btn:hover,
@@ -378,6 +380,10 @@
 
   .github-mock {
     transform: none;
+    animation: github-breath 4s ease-in-out infinite;
+  }
+  .github-mock:hover {
+    transform: none;
   }
 
   .project-info {
@@ -413,7 +419,13 @@
   .slider-wrapper {
     border-radius: 15px;
   }
-
+  .github-mock {
+    transform: none;
+    animation: github-breath 4s ease-in-out infinite;
+  }
+  .github-mock:hover {
+    transform: none;
+  }
   .project-card {
     border-radius: 15px;
   }
@@ -460,6 +472,18 @@
   to {
     opacity: 0;
     transform: translateX(-30px) scale(0.95);
+  }
+}
+
+@keyframes github-breath {
+  0%,
+  100% {
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    transform: perspective(1000px) scale(1);
+  }
+  50% {
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+    transform: perspective(1000px) scale(1.035);
   }
 }
 
