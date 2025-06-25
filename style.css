@@ -906,21 +906,22 @@ b span {
 
 .music .section-title span {
   color: rgba(255, 255, 255, 0.8);
-  font-size: 1.2rem;
+  /* font-size: 1.2rem; */
 }
 
 .spotify-container {
-  max-width: 800px;
+  max-width: 1000px;
   margin: 0 auto;
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
+  flex-direction: row;
   gap: 30px;
   align-items: center;
 }
 
 .spotify-embed {
   width: 100%;
-  max-width: 600px;
+  max-width: 800px;
   border-radius: 20px;
   overflow: hidden;
   /* box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4); */
@@ -937,8 +938,8 @@ b span {
 }
 
 .music-description {
-  text-align: center;
-  max-width: 600px;
+  text-align: start;
+  max-width: 400px;
 }
 
 .music-description p {
@@ -952,13 +953,16 @@ b span {
   .music {
     padding: 60px 0;
   }
-
+  .music-description {
+    text-align: justify;
+    max-width: 100%;
+  }
   .spotify-container {
     gap: 20px;
+    flex-direction: column;
   }
-
-  .spotify-embed iframe {
-    height: 300px;
+  .spotify-container .spotify-embed iframe {
+    height: 200px;
   }
 
   .music-description p {

@@ -351,7 +351,9 @@
   transform: translate(-50%, -50%);
   animation: pulse 2s infinite;
 }
-
+.section-title {
+  text-align: start !important;
+}
 @keyframes pulse {
   0% {
     transform: translate(-50%, -50%) scale(1);
@@ -369,6 +371,9 @@
     padding: 60px 0;
   }
 
+  .section-title {
+    text-align: start !important;
+  }
   .project-card {
     grid-template-columns: 1fr;
     min-height: auto;
@@ -415,7 +420,9 @@
   .projects .container {
     padding: 0 15px;
   }
-
+  .section-title {
+    text-align: start !important;
+  }
   .slider-wrapper {
     border-radius: 15px;
   }
