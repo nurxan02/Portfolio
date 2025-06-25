@@ -134,3 +134,92 @@ class TechSlider {
 document.addEventListener("DOMContentLoaded", () => {
   new TechSlider();
 });
+
+// Mobile Navigation Burger Menu
+class MobileNavigation {
+  constructor() {
+    this.burgerMenu = document.getElementById("burgerMenu");
+    this.navLinks = document.getElementById("navLinks");
+    this.body = document.body;
+    this.isMenuOpen = false;
+
+    this.init();
+  }
+
+  init() {
+    // Add event listener for burger menu click
+    this.burgerMenu.addEventListener("click", () => {
+      this.toggleMenu();
+    });
+
+    // Close menu when clicking on navigation links
+    this.navLinks.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        if (this.isMenuOpen) {
+          this.closeMenu();
+        }
+      });
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener("click", (e) => {
+      if (
+        this.isMenuOpen &&
+        !this.navLinks.contains(e.target) &&
+        !this.burgerMenu.contains(e.target)
+      ) {
+        this.closeMenu();
+      }
+    });
+
+    // Handle window resize
+    window.addEventListener("resize", () => {
+      if (window.innerWidth > 768 && this.isMenuOpen) {
+        this.closeMenu();
+      }
+    });
+
+    // Handle escape key
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && this.isMenuOpen) {
+        this.closeMenu();
+      }
+    });
+  }
+
+  toggleMenu() {
+    if (this.isMenuOpen) {
+      this.closeMenu();
+    } else {
+      this.openMenu();
+    }
+  }
+
+  openMenu() {
+    this.burgerMenu.classList.add("active");
+    this.navLinks.classList.add("active");
+    this.body.classList.add("menu-open");
+    this.isMenuOpen = true;
+
+    // Set focus to the first menu item for accessibility
+    setTimeout(() => {
+      const firstLink = this.navLinks.querySelector("a");
+      if (firstLink) {
+        firstLink.focus();
+      }
+    }, 300);
+  }
+
+  closeMenu() {
+    this.burgerMenu.classList.remove("active");
+    this.navLinks.classList.remove("active");
+    this.body.classList.remove("menu-open");
+    this.isMenuOpen = false;
+  }
+}
+
+// Initialize mobile navigation when DOM is loaded
+document.addEventListener("DOMContentLoaded", () => {
+  const mobileNav = new MobileNavigation();
+  window.mobileNav = mobileNav; // Make it globally accessible for debugging
+});
