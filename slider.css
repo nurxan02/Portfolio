@@ -475,7 +475,7 @@
   }
 }
 .breath {
-  animation: github-breath 4s ease-in-out infinite;
+  animation: github-breath 1.5s ease-in-out infinite;
 }
 @keyframes github-breath {
   0%,
