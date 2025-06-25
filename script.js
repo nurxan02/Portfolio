@@ -343,9 +343,12 @@ class ContactForm {
     this.messageDiv.className = `form-message ${type}`;
     this.messageDiv.classList.add("show");
 
-    // Auto hide after 15 seconds
+    // Auto hide after 5 seconds and refresh page if success
     setTimeout(() => {
       this.messageDiv.classList.remove("show");
+      if (type === "success") {
+        window.location.reload();
+      }
     }, 5000);
   }
 
