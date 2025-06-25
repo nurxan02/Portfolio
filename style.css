@@ -176,10 +176,17 @@ li img {
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: 0.3s ease;
 }
-#scrollToTopBtn img {
-  width: 24px;
-  margin-bottom: 3px;
+#scrollToTopBtn:hover {
+  background: #005bb5;
+  box-shadow: 0 6px 20px rgba(0, 91, 181, 0.4);
+  transform: scale(1.1) translateY(-4px);
+}
+#scrollToTopBtn i {
+  font-size: 27px;
+  margin-top: 5px;
+  transform: rotate(-45deg);
 }
 #scrollToTopBtn.show {
   opacity: 1;
@@ -345,7 +352,7 @@ nav ul li a img {
   border-radius: 15px;
   font-weight: 500;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(0, 122, 255, 0.3);
+  box-shadow: 0 4px 15px rgb(0, 122, 252);
   animation: fadeInUp 2s ease-out;
 }
 
