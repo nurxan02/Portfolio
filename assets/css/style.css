@@ -1,125 +1,125 @@
 @font-face {
   font-family: "SF Pro Display";
-  src: url("./fonts/San Francisco Pro Display/SF-Pro-Display-Thin.otf")
+  src: url("../../fonts/San Francisco Pro Display/SF-Pro-Display-Thin.otf")
     format("opentype");
   font-weight: 100;
   font-style: normal;
 }
 @font-face {
   font-family: "SF Pro Display";
-  src: url("./fonts/San Francisco Pro Display/SF-Pro-Display-ThinItalic.otf")
+  src: url("../../fonts/San Francisco Pro Display/SF-Pro-Display-ThinItalic.otf")
     format("opentype");
   font-weight: 100;
   font-style: italic;
 }
 @font-face {
   font-family: "SF Pro Display";
-  src: url("./fonts/San Francisco Pro Display/SF-Pro-Display-Ultralight.otf")
+  src: url("../../fonts/San Francisco Pro Display/SF-Pro-Display-Ultralight.otf")
     format("opentype");
   font-weight: 200;
   font-style: normal;
 }
 @font-face {
   font-family: "SF Pro Display";
-  src: url("./fonts/San Francisco Pro Display/SF-Pro-Display-UltralightItalic.otf")
+  src: url("../../fonts/San Francisco Pro Display/SF-Pro-Display-UltralightItalic.otf")
     format("opentype");
   font-weight: 200;
   font-style: italic;
 }
 @font-face {
   font-family: "SF Pro Display";
-  src: url("./fonts/San Francisco Pro Display/SF-Pro-Display-Light.otf")
+  src: url("../../fonts/San Francisco Pro Display/SF-Pro-Display-Light.otf")
     format("opentype");
   font-weight: 300;
   font-style: normal;
 }
 @font-face {
   font-family: "SF Pro Display";
-  src: url("./fonts/San Francisco Pro Display/SF-Pro-Display-LightItalic.otf")
+  src: url("../../fonts/San Francisco Pro Display/SF-Pro-Display-LightItalic.otf")
     format("opentype");
   font-weight: 300;
   font-style: italic;
 }
 @font-face {
   font-family: "SF Pro Display";
-  src: url("./fonts/San Francisco Pro Display/SF-Pro-Display-Regular.otf")
+  src: url("../../fonts/San Francisco Pro Display/SF-Pro-Display-Regular.otf")
     format("opentype");
   font-weight: 400;
   font-style: normal;
 }
 @font-face {
   font-family: "SF Pro Display";
-  src: url("./fonts/San Francisco Pro Display/SF-Pro-Display-RegularItalic.otf")
+  src: url("../../fonts/San Francisco Pro Display/SF-Pro-Display-RegularItalic.otf")
     format("opentype");
   font-weight: 400;
   font-style: italic;
 }
 @font-face {
   font-family: "SF Pro Display";
-  src: url("./fonts/San Francisco Pro Display/SF-Pro-Display-Medium.otf")
+  src: url("../../fonts/San Francisco Pro Display/SF-Pro-Display-Medium.otf")
     format("opentype");
   font-weight: 500;
   font-style: normal;
 }
 @font-face {
   font-family: "SF Pro Display";
-  src: url("./fonts/San Francisco Pro Display/SF-Pro-Display-MediumItalic.otf")
+  src: url("../../fonts/San Francisco Pro Display/SF-Pro-Display-MediumItalic.otf")
     format("opentype");
   font-weight: 500;
   font-style: italic;
 }
 @font-face {
   font-family: "SF Pro Display";
-  src: url("./fonts/San Francisco Pro Display/SF-Pro-Display-Semibold.otf")
+  src: url("../../fonts/San Francisco Pro Display/SF-Pro-Display-Semibold.otf")
     format("opentype");
   font-weight: 600;
   font-style: normal;
 }
 @font-face {
   font-family: "SF Pro Display";
-  src: url("./fonts/San Francisco Pro Display/SF-Pro-Display-SemiboldItalic.otf")
+  src: url("../../fonts/San Francisco Pro Display/SF-Pro-Display-SemiboldItalic.otf")
     format("opentype");
   font-weight: 600;
   font-style: italic;
 }
 @font-face {
   font-family: "SF Pro Display";
-  src: url("./fonts/San Francisco Pro Display/SF-Pro-Display-Bold.otf")
+  src: url("../../fonts/San Francisco Pro Display/SF-Pro-Display-Bold.otf")
     format("opentype");
   font-weight: 700;
   font-style: normal;
 }
 @font-face {
   font-family: "SF Pro Display";
-  src: url("./fonts/San Francisco Pro Display/SF-Pro-Display-BoldItalic.otf")
+  src: url("../../fonts/San Francisco Pro Display/SF-Pro-Display-BoldItalic.otf")
     format("opentype");
   font-weight: 700;
   font-style: italic;
 }
 @font-face {
   font-family: "SF Pro Display";
-  src: url("./fonts/San Francisco Pro Display/SF-Pro-Display-Heavy.otf")
+  src: url("../../fonts/San Francisco Pro Display/SF-Pro-Display-Heavy.otf")
     format("opentype");
   font-weight: 800;
   font-style: normal;
 }
 @font-face {
   font-family: "SF Pro Display";
-  src: url("./fonts/San Francisco Pro Display/SF-Pro-Display-HeavyItalic.otf")
+  src: url("../../fonts/San Francisco Pro Display/SF-Pro-Display-HeavyItalic.otf")
     format("opentype");
   font-weight: 800;
   font-style: italic;
 }
 @font-face {
   font-family: "SF Pro Display";
-  src: url("./fonts/San Francisco Pro Display/SF-Pro-Display-Black.otf")
+  src: url("../../fonts/San Francisco Pro Display/SF-Pro-Display-Black.otf")
     format("opentype");
   font-weight: 900;
   font-style: normal;
 }
 @font-face {
   font-family: "SF Pro Display";
-  src: url("./fonts/San Francisco Pro Display/SF-Pro-Display-BlackItalic.otf")
+  src: url("../../fonts/San Francisco Pro Display/SF-Pro-Display-BlackItalic.otf")
     format("opentype");
   font-weight: 900;
   font-style: italic;
@@ -310,7 +310,7 @@ nav ul li a img {
   content: "";
   position: absolute;
   inset: 0;
-  background-image: url("./image/hero-image.jpg");
+  background-image: url("../../image/hero-image.jpg");
   background-size: cover;
   background-position: center;
   opacity: 0.7; /* İstədiyiniz dəyəri yazın */
