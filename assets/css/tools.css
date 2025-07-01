@@ -160,7 +160,7 @@
 /* Tool Cards */
 .tools-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   gap: 30px;
   margin-top: 20px;
   transition: all 0.3s ease;
@@ -251,6 +251,22 @@
   border-color: transparent;
 }
 
+/* Large Mobile and Small Tablet */
+@media (max-width: 900px) {
+  .tools-grid {
+    grid-template-columns: 1fr !important;
+    gap: 25px;
+  }
+}
+
+/* Mobile First Responsive Design */
+@media (max-width: 640px) {
+  .tools-grid {
+    grid-template-columns: 1fr !important;
+    gap: 20px;
+  }
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
   .tools-controls {
@@ -287,7 +303,7 @@
   }
 
   .tools-grid {
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: 1fr;
     gap: 20px;
   }
 
@@ -308,6 +324,55 @@
 
   .tool-card p {
     font-size: 0.85rem;
+  }
+
+  /* Generator Tools Mobile Responsive */
+  .border-radius-generator,
+  .shadow-generator,
+  .json-editor,
+  .gradient-generator,
+  .units-converter,
+  .filter-generator,
+  .grid-generator,
+  .qr-generator,
+  .palette-generator,
+  .base64-encoder,
+  .scss-converter {
+    grid-template-columns: 1fr !important;
+    gap: 25px;
+  }
+
+  .border-controls {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .grid-control-row {
+    grid-template-columns: 1fr !important;
+    gap: 15px;
+  }
+
+  .palette-type-selector,
+  .format-selector {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .base-color-control {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .border-preview,
+  .shadow-preview {
+    width: 150px;
+    height: 150px;
+    margin: 20px auto;
+  }
+
+  .json-textarea {
+    height: 200px;
   }
 }
 
@@ -375,6 +440,41 @@
   .tools-count span {
     font-size: 13px;
     padding: 6px 12px;
+  }
+
+  /* Very Small Screens Generator Fixes */
+  .border-preview,
+  .shadow-preview {
+    width: 120px;
+    height: 120px;
+    margin: 15px auto;
+  }
+
+  .border-controls {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .grid-control-row {
+    grid-template-columns: 1fr !important;
+    gap: 10px;
+  }
+
+  .palette-type-selector,
+  .format-selector {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .base-color-control {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .json-textarea {
+    height: 150px;
+    font-size: 12px;
   }
 }
 
@@ -1842,6 +1942,38 @@ input[type="color"]:hover {
 
 /* Responsive Design */
 @media (max-width: 768px) {
+  .tool-modal-content {
+    width: 95%;
+    max-width: none;
+    max-height: 95vh;
+    margin: 20px;
+    border-radius: 15px;
+  }
+
+  .tool-modal-header {
+    padding: 15px 20px 15px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0;
+  }
+
+  .tool-modal-header h2 {
+    font-size: 1.3rem;
+    margin: 0;
+  }
+
+  .close-modal {
+    position: static;
+    width: 35px;
+    height: 35px;
+    font-size: 0.9rem;
+  }
+
+  .tool-modal-body {
+    padding: 20px;
+  }
+
   .image-comparison {
     grid-template-columns: 1fr;
     gap: 20px;
@@ -1869,5 +2001,57 @@ input[type="color"]:hover {
     width: 100%;
     max-width: 200px;
     justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .tool-modal-content {
+    width: 98%;
+    max-height: 98vh;
+    margin: 10px;
+    border-radius: 12px;
+  }
+
+  .tool-modal-header {
+    padding: 15px 15px 12px;
+  }
+
+  .tool-modal-header h2 {
+    font-size: 1.1rem;
+    line-height: 1.3;
+  }
+
+  .close-modal {
+    top: 12px;
+    right: 12px;
+    width: 30px;
+    height: 30px;
+    font-size: 0.8rem;
+  }
+
+  .tool-modal-body {
+    padding: 15px;
+  }
+
+  .upload-area {
+    padding: 25px 10px;
+  }
+
+  .upload-area h3 {
+    font-size: 18px;
+  }
+
+  .upload-area p {
+    font-size: 14px;
+  }
+
+  .upload-area i {
+    font-size: 32px;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    padding: 12px 20px;
+    font-size: 14px;
   }
 }
