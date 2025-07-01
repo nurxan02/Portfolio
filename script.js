@@ -392,4 +392,61 @@ class ContactForm {
 document.addEventListener("DOMContentLoaded", () => {
   const contactForm = new ContactForm();
   window.contactForm = contactForm; // Make it globally accessible
+
+  // Initialize Show More Tools button
+  const showMoreBtn = document.getElementById("showMoreBtn");
+  if (showMoreBtn) {
+    showMoreBtn.addEventListener("click", toggleMoreTools);
+    console.log("Show More Tools button initialized");
+  } else {
+    console.error("Show More Tools button not found");
+  }
 });
+
+// Toggle More Tools Function
+function toggleMoreTools() {
+  console.log("toggleMoreTools called");
+
+  const hiddenTools = document.querySelectorAll(".hidden-tool");
+  const showMoreBtn = document.getElementById("showMoreBtn");
+  const showMoreText = document.getElementById("showMoreText");
+  const showMoreIcon = document.getElementById("showMoreIcon");
+
+  console.log("Elements found:", {
+    hiddenTools: hiddenTools.length,
+    showMoreBtn: showMoreBtn,
+    showMoreText: showMoreText,
+    showMoreIcon: showMoreIcon,
+  });
+
+  const isExpanded = showMoreBtn.classList.contains("expanded");
+  console.log("Is expanded:", isExpanded);
+
+  if (isExpanded) {
+    console.log("Hiding tools");
+    // Hide tools
+    hiddenTools.forEach((tool, index) => {
+      setTimeout(() => {
+        tool.classList.remove("show");
+        tool.style.display = "none";
+      }, index * 100);
+    });
+
+    showMoreBtn.classList.remove("expanded");
+    showMoreText.textContent = "Show More Tools";
+    showMoreIcon.className = "fas fa-chevron-down";
+  } else {
+    console.log("Showing tools");
+    // Show tools
+    hiddenTools.forEach((tool, index) => {
+      setTimeout(() => {
+        tool.style.display = "block";
+        tool.classList.add("show");
+      }, index * 100);
+    });
+
+    showMoreBtn.classList.add("expanded");
+    showMoreText.textContent = "Show Less Tools";
+    showMoreIcon.className = "fas fa-chevron-up";
+  }
+}
