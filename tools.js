@@ -2614,7 +2614,8 @@ class WebTools {
     const updateGlassEffect = () => {
       const blur = document.getElementById("glassBlur").value;
       const opacity = document.getElementById("glassOpacity").value / 100;
-      const borderOpacity = document.getElementById("glassBorderOpacity").value / 100;
+      const borderOpacity =
+        document.getElementById("glassBorderOpacity").value / 100;
       const borderRadius = document.getElementById("glassBorderRadius").value;
       const saturation = document.getElementById("glassSaturation").value;
       const contrast = document.getElementById("glassContrast").value;
@@ -2622,7 +2623,8 @@ class WebTools {
       const shadowX = document.getElementById("glassShadowX").value;
       const shadowY = document.getElementById("glassShadowY").value;
       const shadowBlur = document.getElementById("glassShadowBlur").value;
-      const shadowOpacity = document.getElementById("glassShadowOpacity").value / 100;
+      const shadowOpacity =
+        document.getElementById("glassShadowOpacity").value / 100;
       const bgColor = document.getElementById("glassBackgroundColor").value;
       const borderColor = document.getElementById("glassBorderColor").value;
 
@@ -2641,7 +2643,10 @@ class WebTools {
       const backdropFilter = `blur(${blur}px) saturate(${saturation}%) contrast(${contrast}%) brightness(${brightness}%)`;
       const backgroundColor = hexToRgba(bgColor, opacity);
       const borderColorRgba = hexToRgba(borderColor, borderOpacity);
-      const boxShadow = `${shadowX}px ${shadowY}px ${shadowBlur}px ${hexToRgba('#000000', shadowOpacity)}`;
+      const boxShadow = `${shadowX}px ${shadowY}px ${shadowBlur}px ${hexToRgba(
+        "#000000",
+        shadowOpacity
+      )}`;
 
       // Apply styles to preview
       glassElement.style.backdropFilter = backdropFilter;
@@ -2674,7 +2679,10 @@ class WebTools {
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(135deg, ${hexToRgba(borderColor, 0.1)} 0%, transparent 50%);
+  background: linear-gradient(135deg, ${hexToRgba(
+    borderColor,
+    0.1
+  )} 0%, transparent 50%);
   pointer-events: none;
 }`;
 
@@ -2682,27 +2690,44 @@ class WebTools {
 
       // Update value displays
       document.getElementById("glassBlurValue").textContent = blur + "px";
-      document.getElementById("glassOpacityValue").textContent = opacity.toFixed(2);
-      document.getElementById("glassBorderOpacityValue").textContent = borderOpacity.toFixed(2);
-      document.getElementById("glassBorderRadiusValue").textContent = borderRadius + "px";
-      document.getElementById("glassSaturationValue").textContent = saturation + "%";
-      document.getElementById("glassContrastValue").textContent = contrast + "%";
-      document.getElementById("glassBrightnessValue").textContent = brightness + "%";
+      document.getElementById("glassOpacityValue").textContent =
+        opacity.toFixed(2);
+      document.getElementById("glassBorderOpacityValue").textContent =
+        borderOpacity.toFixed(2);
+      document.getElementById("glassBorderRadiusValue").textContent =
+        borderRadius + "px";
+      document.getElementById("glassSaturationValue").textContent =
+        saturation + "%";
+      document.getElementById("glassContrastValue").textContent =
+        contrast + "%";
+      document.getElementById("glassBrightnessValue").textContent =
+        brightness + "%";
       document.getElementById("glassShadowXValue").textContent = shadowX + "px";
       document.getElementById("glassShadowYValue").textContent = shadowY + "px";
-      document.getElementById("glassShadowBlurValue").textContent = shadowBlur + "px";
-      document.getElementById("glassShadowOpacityValue").textContent = shadowOpacity.toFixed(2);
+      document.getElementById("glassShadowBlurValue").textContent =
+        shadowBlur + "px";
+      document.getElementById("glassShadowOpacityValue").textContent =
+        shadowOpacity.toFixed(2);
     };
 
     // Add event listeners for all controls
     const controls = [
-      "glassBlur", "glassOpacity", "glassBorderOpacity", "glassBorderRadius",
-      "glassSaturation", "glassContrast", "glassBrightness", "glassShadowX",
-      "glassShadowY", "glassShadowBlur", "glassShadowOpacity", 
-      "glassBackgroundColor", "glassBorderColor"
+      "glassBlur",
+      "glassOpacity",
+      "glassBorderOpacity",
+      "glassBorderRadius",
+      "glassSaturation",
+      "glassContrast",
+      "glassBrightness",
+      "glassShadowX",
+      "glassShadowY",
+      "glassShadowBlur",
+      "glassShadowOpacity",
+      "glassBackgroundColor",
+      "glassBorderColor",
     ];
 
-    controls.forEach(id => {
+    controls.forEach((id) => {
       const element = document.getElementById(id);
       if (element) {
         element.addEventListener("input", updateGlassEffect);
@@ -2721,52 +2746,108 @@ class WebTools {
   applyGlassPreset(preset) {
     const presets = {
       frosted: {
-        blur: 10, opacity: 20, borderOpacity: 30, borderRadius: 16,
-        saturation: 100, contrast: 100, brightness: 100,
-        shadowX: 0, shadowY: 8, shadowBlur: 32, shadowOpacity: 37,
-        bgColor: "#ffffff", borderColor: "#ffffff"
+        blur: 10,
+        opacity: 20,
+        borderOpacity: 30,
+        borderRadius: 16,
+        saturation: 100,
+        contrast: 100,
+        brightness: 100,
+        shadowX: 0,
+        shadowY: 8,
+        shadowBlur: 32,
+        shadowOpacity: 37,
+        bgColor: "#ffffff",
+        borderColor: "#ffffff",
       },
       clear: {
-        blur: 6, opacity: 10, borderOpacity: 20, borderRadius: 12,
-        saturation: 100, contrast: 110, brightness: 110,
-        shadowX: 0, shadowY: 4, shadowBlur: 16, shadowOpacity: 20,
-        bgColor: "#ffffff", borderColor: "#ffffff"
+        blur: 6,
+        opacity: 10,
+        borderOpacity: 20,
+        borderRadius: 12,
+        saturation: 100,
+        contrast: 110,
+        brightness: 110,
+        shadowX: 0,
+        shadowY: 4,
+        shadowBlur: 16,
+        shadowOpacity: 20,
+        bgColor: "#ffffff",
+        borderColor: "#ffffff",
       },
       tinted: {
-        blur: 12, opacity: 25, borderOpacity: 40, borderRadius: 20,
-        saturation: 120, contrast: 95, brightness: 95,
-        shadowX: 0, shadowY: 8, shadowBlur: 24, shadowOpacity: 30,
-        bgColor: "#007aff", borderColor: "#007aff"
+        blur: 12,
+        opacity: 25,
+        borderOpacity: 40,
+        borderRadius: 20,
+        saturation: 120,
+        contrast: 95,
+        brightness: 95,
+        shadowX: 0,
+        shadowY: 8,
+        shadowBlur: 24,
+        shadowOpacity: 30,
+        bgColor: "#007aff",
+        borderColor: "#007aff",
       },
       colorful: {
-        blur: 15, opacity: 30, borderOpacity: 50, borderRadius: 24,
-        saturation: 150, contrast: 90, brightness: 105,
-        shadowX: 0, shadowY: 12, shadowBlur: 40, shadowOpacity: 40,
-        bgColor: "#ff6b6b", borderColor: "#4ecdc4"
+        blur: 15,
+        opacity: 30,
+        borderOpacity: 50,
+        borderRadius: 24,
+        saturation: 150,
+        contrast: 90,
+        brightness: 105,
+        shadowX: 0,
+        shadowY: 12,
+        shadowBlur: 40,
+        shadowOpacity: 40,
+        bgColor: "#ff6b6b",
+        borderColor: "#4ecdc4",
       },
       dark: {
-        blur: 8, opacity: 40, borderOpacity: 60, borderRadius: 16,
-        saturation: 80, contrast: 120, brightness: 80,
-        shadowX: 0, shadowY: 8, shadowBlur: 32, shadowOpacity: 60,
-        bgColor: "#1a1a1a", borderColor: "#333333"
+        blur: 8,
+        opacity: 40,
+        borderOpacity: 60,
+        borderRadius: 16,
+        saturation: 80,
+        contrast: 120,
+        brightness: 80,
+        shadowX: 0,
+        shadowY: 8,
+        shadowBlur: 32,
+        shadowOpacity: 60,
+        bgColor: "#1a1a1a",
+        borderColor: "#333333",
       },
       minimal: {
-        blur: 4, opacity: 8, borderOpacity: 15, borderRadius: 8,
-        saturation: 100, contrast: 100, brightness: 100,
-        shadowX: 0, shadowY: 2, shadowBlur: 8, shadowOpacity: 15,
-        bgColor: "#ffffff", borderColor: "#ffffff"
-      }
+        blur: 4,
+        opacity: 8,
+        borderOpacity: 15,
+        borderRadius: 8,
+        saturation: 100,
+        contrast: 100,
+        brightness: 100,
+        shadowX: 0,
+        shadowY: 2,
+        shadowBlur: 8,
+        shadowOpacity: 15,
+        bgColor: "#ffffff",
+        borderColor: "#ffffff",
+      },
     };
 
     const config = presets[preset];
     if (config) {
-      Object.keys(config).forEach(key => {
-        const element = document.getElementById("glass" + key.charAt(0).toUpperCase() + key.slice(1));
+      Object.keys(config).forEach((key) => {
+        const element = document.getElementById(
+          "glass" + key.charAt(0).toUpperCase() + key.slice(1)
+        );
         if (element) {
           element.value = config[key];
         }
       });
-      
+
       // Trigger update
       const event = new Event("input");
       document.getElementById("glassBlur").dispatchEvent(event);
@@ -2777,13 +2858,13 @@ class WebTools {
     const cssCode = document.getElementById("glassCSS");
     cssCode.select();
     document.execCommand("copy");
-    
+
     // Show feedback
     const button = event.target;
     const originalText = button.textContent;
     button.textContent = "Copied!";
     button.style.background = "#34c759";
-    
+
     setTimeout(() => {
       button.textContent = originalText;
       button.style.background = "";
