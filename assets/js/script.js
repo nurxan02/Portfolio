@@ -393,14 +393,14 @@ document.addEventListener("DOMContentLoaded", () => {
   const contactForm = new ContactForm();
   window.contactForm = contactForm; // Make it globally accessible
 
-  // Initialize Show More Tools button
-  const showMoreBtn = document.getElementById("showMoreBtn");
-  if (showMoreBtn) {
-    showMoreBtn.addEventListener("click", toggleMoreTools);
-    console.log("Show More Tools button initialized");
-  } else {
-    console.error("Show More Tools button not found");
-  }
+  // Initialize Show More Tools button - This is now handled by WebTools class
+  // const showMoreBtn = document.getElementById("showMoreBtn");
+  // if (showMoreBtn) {
+  //   showMoreBtn.addEventListener("click", toggleMoreTools);
+  //   console.log("Show More Tools button initialized");
+  // } else {
+  //   console.error("Show More Tools button not found");
+  // }
 });
 
 // Toggle More Tools Function

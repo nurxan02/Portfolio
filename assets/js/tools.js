@@ -7,6 +7,19 @@ class WebTools {
     this.modalBody = document.getElementById("toolModalBody");
     this.closeBtn = document.getElementById("closeModal");
 
+    // Search and filter elements
+    this.searchInput = document.getElementById("toolsSearch");
+    this.clearSearchBtn = document.getElementById("clearSearch");
+    this.filterBtns = document.querySelectorAll(".filter-btn");
+    this.toolCards = document.querySelectorAll(".tool-card");
+    this.toolsCount = document.getElementById("toolsCount");
+    this.noResults = document.getElementById("noResults");
+    this.showMoreBtn = document.getElementById("showMoreBtn");
+
+    // Current filter state
+    this.currentFilter = "all";
+    this.currentSearchTerm = "";
+
     console.log("Modal elements:", {
       modal: this.modal,
       modalTitle: this.modalTitle,
@@ -19,6 +32,13 @@ class WebTools {
 
   init() {
     console.log("WebTools init called");
+
+    // Initialize search and filter functionality
+    this.initSearchAndFilter();
+
+    // Initialize show more functionality
+    this.initShowMore();
+
     // Add event listeners for tool cards
     const toolCards = document.querySelectorAll(".tool-card");
     console.log("Found tool cards:", toolCards.length);
@@ -53,77 +73,299 @@ class WebTools {
         this.closeModal();
       }
     });
+
+    // Initial count update
+    this.updateToolsCount();
+  }
+
+  initSearchAndFilter() {
+    // Search functionality
+    if (this.searchInput) {
+      this.searchInput.addEventListener("input", (e) => {
+        this.currentSearchTerm = e.target.value.toLowerCase().trim();
+        this.toggleClearButton();
+        this.filterTools();
+      });
+    }
+
+    // Clear search button
+    if (this.clearSearchBtn) {
+      this.clearSearchBtn.addEventListener("click", () => {
+        this.searchInput.value = "";
+        this.currentSearchTerm = "";
+        this.toggleClearButton();
+        this.filterTools();
+        this.searchInput.focus();
+      });
+    }
+
+    // Filter buttons
+    this.filterBtns.forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        // Remove active class from all buttons
+        this.filterBtns.forEach((b) => b.classList.remove("active"));
+        // Add active class to clicked button
+        btn.classList.add("active");
+
+        this.currentFilter = btn.getAttribute("data-filter");
+        this.filterTools();
+      });
+    });
+  }
+
+  initShowMore() {
+    if (this.showMoreBtn) {
+      this.showMoreBtn.addEventListener("click", () => this.toggleMoreTools());
+    }
+  }
+
+  toggleMoreTools() {
+    const hiddenTools = document.querySelectorAll(".hidden-tool");
+    const showMoreText = document.getElementById("showMoreText");
+    const showMoreIcon = document.getElementById("showMoreIcon");
+
+    const isExpanded = this.showMoreBtn.classList.contains("expanded");
+
+    if (isExpanded) {
+      // Hide tools
+      hiddenTools.forEach((tool, index) => {
+        setTimeout(() => {
+          tool.classList.remove("show");
+          tool.style.display = "none";
+        }, index * 100);
+      });
+
+      this.showMoreBtn.classList.remove("expanded");
+      if (showMoreText) showMoreText.textContent = "Show More Tools";
+      if (showMoreIcon) showMoreIcon.className = "fas fa-chevron-down";
+    } else {
+      // Show tools
+      hiddenTools.forEach((tool, index) => {
+        setTimeout(() => {
+          tool.style.display = "block";
+          tool.classList.add("show");
+        }, index * 100);
+      });
+
+      this.showMoreBtn.classList.add("expanded");
+      if (showMoreText) showMoreText.textContent = "Show Less Tools";
+      if (showMoreIcon) showMoreIcon.className = "fas fa-chevron-up";
+    }
+
+    // Update count after animation
+    setTimeout(() => {
+      this.updateToolsCount();
+    }, 500);
+  }
+
+  toggleClearButton() {
+    if (this.clearSearchBtn) {
+      if (this.currentSearchTerm.length > 0) {
+        this.clearSearchBtn.style.display = "block";
+      } else {
+        this.clearSearchBtn.style.display = "none";
+      }
+    }
+  }
+
+  filterTools() {
+    let visibleCount = 0;
+    let hiddenToolsVisible = 0;
+
+    this.toolCards.forEach((card) => {
+      const shouldShow = this.shouldShowTool(card);
+      const isHiddenTool = card.classList.contains("hidden-tool");
+      const isExpanded =
+        this.showMoreBtn && this.showMoreBtn.classList.contains("expanded");
+
+      // Check if hidden tool should be visible based on expand state and filters
+      const shouldShowHiddenTool =
+        isHiddenTool &&
+        (isExpanded || this.currentSearchTerm || this.currentFilter !== "all");
+
+      if (shouldShow && (!isHiddenTool || shouldShowHiddenTool)) {
+        card.classList.remove("filtered-out");
+        card.style.display = "block";
+        visibleCount++;
+
+        // Check if this is a hidden tool that's now visible
+        if (isHiddenTool) {
+          hiddenToolsVisible++;
+        }
+      } else {
+        card.classList.add("filtered-out");
+        // Don't set display: none immediately, let CSS transition handle it
+        setTimeout(() => {
+          if (card.classList.contains("filtered-out")) {
+            card.style.display = "none";
+          }
+        }, 300);
+      }
+    });
+
+    // Update show more button visibility
+    this.updateShowMoreButton(hiddenToolsVisible);
+
+    // Update count and show/hide no results
+    this.updateToolsCount(visibleCount);
+    this.toggleNoResults(visibleCount === 0);
+  }
+
+  shouldShowTool(card) {
+    // Check search term
+    if (this.currentSearchTerm) {
+      const title = card.querySelector("h3").textContent.toLowerCase();
+      const description = card.querySelector("p").textContent.toLowerCase();
+      const searchMatch =
+        title.includes(this.currentSearchTerm) ||
+        description.includes(this.currentSearchTerm);
+
+      if (!searchMatch) return false;
+    }
+
+    // Check category filter
+    if (this.currentFilter === "all") return true;
+
+    const categories = card.getAttribute("data-category") || "";
+    return categories.split(",").includes(this.currentFilter);
+  }
+
+  updateShowMoreButton(hiddenToolsVisible) {
+    if (this.showMoreBtn) {
+      // If we have search/filter active and some hidden tools are visible, hide the button
+      if (
+        (this.currentSearchTerm || this.currentFilter !== "all") &&
+        hiddenToolsVisible > 0
+      ) {
+        this.showMoreBtn.style.display = "none";
+      } else if (this.currentSearchTerm || this.currentFilter !== "all") {
+        this.showMoreBtn.style.display = "none";
+      } else {
+        // Show button only if there are hidden tools and no filters active
+        const hasHiddenTools =
+          document.querySelectorAll(".tool-card.hidden-tool").length > 0;
+        this.showMoreBtn.style.display = hasHiddenTools ? "flex" : "none";
+      }
+    }
+  }
+
+  updateToolsCount(count = null) {
+    if (this.toolsCount) {
+      if (count === null) {
+        count = this.toolCards.length;
+      }
+
+      const toolText = count === 1 ? "tool" : "tools";
+      const searchText = this.currentSearchTerm
+        ? ` for "${this.currentSearchTerm}"`
+        : "";
+      const filterText =
+        this.currentFilter !== "all"
+          ? ` in ${this.getFilterDisplayName(this.currentFilter)}`
+          : "";
+
+      this.toolsCount.innerHTML = `${count} ${toolText} found${searchText}${filterText}`;
+    }
+  }
+
+  getFilterDisplayName(filter) {
+    const filterNames = {
+      css: "CSS Tools",
+      utility: "Utilities",
+      generator: "Generators",
+      converter: "Converters",
+    };
+    return filterNames[filter] || filter;
+  }
+
+  toggleNoResults(show) {
+    if (this.noResults) {
+      this.noResults.style.display = show ? "block" : "none";
+    }
   }
 
   openTool(toolType) {
     console.log("openTool called with:", toolType);
-    const tools = {
-      gradient: {
-        title: "CSS Gradient Generator",
-        content: this.createGradientGenerator(),
-      },
-      "border-radius": {
-        title: "Border Radius Generator",
-        content: this.createBorderRadiusGenerator(),
-      },
-      "box-shadow": {
-        title: "Box Shadow Generator",
-        content: this.createBoxShadowGenerator(),
-      },
-      "file-compressor": {
-        title: "Image Size Reducer",
-        content: this.createFileCompressor(),
-      },
-      "css-units": {
-        title: "CSS Units Converter",
-        content: this.createCSSUnitsConverter(),
-      },
-      "json-editor": {
-        title: "JSON Editor",
-        content: this.createJSONEditor(),
-      },
-      "qr-generator": {
-        title: "QR Code Generator",
-        content: this.createQRGenerator(),
-      },
-      "color-palette": {
-        title: "Color Palette Generator",
-        content: this.createColorPaletteGenerator(),
-      },
-      "filter-generator": {
-        title: "Filter Generator",
-        content: this.createFilterGenerator(),
-      },
-      "grid-generator": {
-        title: "Grid Generator",
-        content: this.createGridGenerator(),
-      },
-      "base64-encoder": {
-        title: "Base64 Encoder/Decoder",
-        content: this.createBase64Encoder(),
-      },
-      "scss-converter": {
-        title: "SCSS ↔ CSS Converter",
-        content: this.createSCSSConverter(),
-      },
-      "glass-effect": {
-        title: "Glass Effect Generator",
-        content: this.createGlassEffectGenerator(),
-      },
-    };
 
-    const tool = tools[toolType];
-    console.log("Tool found:", tool);
-    if (tool) {
-      if (this.modalTitle) this.modalTitle.textContent = tool.title;
-      if (this.modalBody) this.modalBody.innerHTML = tool.content;
-      if (this.modal) this.modal.classList.add("show");
-      document.body.style.overflow = "hidden";
+    try {
+      const tools = {
+        gradient: {
+          title: "CSS Gradient Generator",
+          content: this.createGradientGenerator(),
+        },
+        "border-radius": {
+          title: "Border Radius Generator",
+          content: this.createBorderRadiusGenerator(),
+        },
+        "box-shadow": {
+          title: "Box Shadow Generator",
+          content: this.createBoxShadowGenerator(),
+        },
+        "file-compressor": {
+          title: "Image Size Reducer",
+          content: this.createFileCompressor(),
+        },
+        "css-units": {
+          title: "CSS Units Converter",
+          content: this.createCSSUnitsConverter(),
+        },
+        "json-editor": {
+          title: "JSON Editor",
+          content: this.createJSONEditor(),
+        },
+        "qr-generator": {
+          title: "QR Code Generator",
+          content: this.createQRGenerator(),
+        },
+        "color-palette": {
+          title: "Color Palette Generator",
+          content: this.createColorPaletteGenerator(),
+        },
+        "filter-generator": {
+          title: "Filter Generator",
+          content: this.createFilterGenerator(),
+        },
+        "grid-generator": {
+          title: "Grid Generator",
+          content: this.createGridGenerator(),
+        },
+        "base64-encoder": {
+          title: "Base64 Encoder/Decoder",
+          content: this.createBase64Encoder(),
+        },
+        "scss-converter": {
+          title: "SCSS ↔ CSS Converter",
+          content: this.createSCSSConverter(),
+        },
+        "glass-effect": {
+          title: "Glass Effect Generator",
+          content: this.createGlassEffectGenerator(),
+        },
+        "background-remover": {
+          title: "Background Remover",
+          content: this.createBackgroundRemover(),
+        },
+      };
 
-      // Initialize tool-specific functionality
-      this.initToolFunctionality(toolType);
-    } else {
-      console.error("Tool not found:", toolType);
+      const tool = tools[toolType];
+      console.log("Tool found:", tool);
+
+      if (tool) {
+        if (this.modalTitle) this.modalTitle.textContent = tool.title;
+        if (this.modalBody) this.modalBody.innerHTML = tool.content;
+        if (this.modal) {
+          this.modal.classList.add("show");
+          console.log("Modal should be visible now");
+        }
+        document.body.style.overflow = "hidden";
+
+        // Initialize tool-specific functionality
+        this.initializeToolFunctionality(toolType);
+      } else {
+        console.error("Tool not found:", toolType);
+      }
+    } catch (error) {
+      console.error("Error in openTool:", error);
     }
   }
 
@@ -131,6 +373,58 @@ class WebTools {
     console.log("closeModal called");
     if (this.modal) this.modal.classList.remove("show");
     document.body.style.overflow = "auto";
+  }
+
+  initializeToolFunctionality(toolType) {
+    console.log("Initializing tool functionality for:", toolType);
+
+    // Add specific initialization for each tool type
+    switch (toolType) {
+      case "gradient":
+        this.initGradientGenerator();
+        break;
+      case "border-radius":
+        this.initBorderRadiusGenerator();
+        break;
+      case "box-shadow":
+        this.initBoxShadowGenerator();
+        break;
+      case "file-compressor":
+        this.initFileCompressor();
+        break;
+      case "css-units":
+        this.initCSSUnitsConverter();
+        break;
+      case "json-editor":
+        this.initJSONEditor();
+        break;
+      case "qr-generator":
+        this.initQRGenerator();
+        break;
+      case "color-palette":
+        this.initColorPaletteGenerator();
+        break;
+      case "filter-generator":
+        this.initFilterGenerator();
+        break;
+      case "grid-generator":
+        this.initGridGenerator();
+        break;
+      case "base64-encoder":
+        this.initBase64Encoder();
+        break;
+      case "scss-converter":
+        this.initSCSSConverter();
+        break;
+      case "glass-effect":
+        this.initGlassEffectGenerator();
+        break;
+      case "background-remover":
+        this.initBackgroundRemover();
+        break;
+      default:
+        console.log("No specific initialization needed for:", toolType);
+    }
   }
 
   createGradientGenerator() {
@@ -2633,6 +2927,12 @@ class WebTools {
         const r = parseInt(hex.slice(1, 3), 16);
         const g = parseInt(hex.slice(3, 5), 16);
         const b = parseInt(hex.slice(5, 7), 16);
+
+        if (isNaN(r) || isNaN(g) || isNaN(b)) {
+          console.error("Invalid hex color:", hex);
+          return `rgba(255, 255, 255, ${alpha})`; // Fallback to white
+        }
+
         return `rgba(${r}, ${g}, ${b}, ${alpha})`;
       };
 
@@ -2854,45 +3154,364 @@ class WebTools {
     }
   }
 
-  copyGlassCSS() {
-    const cssCode = document.getElementById("glassCSS");
-    cssCode.select();
-    document.execCommand("copy");
+  createBackgroundRemover() {
+    return `
+      <div class="background-remover">
+        <div class="upload-section">
+          <div class="upload-area" id="bgRemoveUploadArea">
+            <i class="fas fa-cloud-upload-alt"></i>
+            <h3>Upload Image</h3>
+            <p>Drag & drop an image here or click to select</p>
+            <input type="file" id="bgRemoveImageInput" accept="image/*" style="display: none;">
+            <button class="upload-btn" id="bgRemoveUploadBtn">Choose Image</button>
+          </div>
+        </div>
 
-    // Show feedback
-    const button = event.target;
-    const originalText = button.textContent;
-    button.textContent = "Copied!";
-    button.style.background = "#34c759";
+        <div class="processing-section" id="bgRemoveProcessing" style="display: none;">
+          <div class="processing-indicator">
+            <i class="fas fa-spinner fa-spin"></i>
+            <p>Removing background...</p>
+          </div>
+        </div>
 
-    setTimeout(() => {
-      button.textContent = originalText;
-      button.style.background = "";
-    }, 2000);
+        <div class="result-section" id="bgRemoveResult" style="display: none;">
+          <div class="comparison-container">
+            <div class="image-comparison">
+              <div class="original-image">
+                <h4>Original</h4>
+                <img id="bgRemoveOriginal" alt="Original image">
+              </div>
+              <div class="processed-image">
+                <h4>Background Removed</h4>
+                <img id="bgRemoveProcessed" alt="Processed image">
+              </div>
+            </div>
+          </div>
+          
+          <div class="download-section">
+            <button class="download-btn" id="bgRemoveDownload">
+              <i class="fas fa-download"></i>
+              Download Result
+            </button>
+            <button class="reset-btn" id="bgRemoveReset">
+              <i class="fas fa-redo"></i>
+              Try Another Image
+            </button>
+          </div>
+        </div>
+
+
+      </div>
+    `;
   }
 
-  downloadGlassCSS() {
-    const cssCode = document.getElementById("glassCSS").value;
-    const blob = new Blob([cssCode], { type: "text/css" });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = "glass-effect.css";
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
-  }
+  initBackgroundRemover() {
+    const uploadArea = document.getElementById("bgRemoveUploadArea");
+    const fileInput = document.getElementById("bgRemoveImageInput");
+    const uploadBtn = document.getElementById("bgRemoveUploadBtn");
+    const processingSection = document.getElementById("bgRemoveProcessing");
+    const resultSection = document.getElementById("bgRemoveResult");
+    const downloadBtn = document.getElementById("bgRemoveDownload");
+    const resetBtn = document.getElementById("bgRemoveReset");
 
-  resetGlassEffect() {
-    document.getElementById("glassPreset").value = "frosted";
-    this.applyGlassPreset("frosted");
+    let processedImageBlob = null;
+
+    // Click to upload
+    uploadBtn.addEventListener("click", () => {
+      fileInput.click();
+    });
+
+    // Drag and drop functionality
+    uploadArea.addEventListener("dragover", (e) => {
+      e.preventDefault();
+      uploadArea.classList.add("drag-over");
+    });
+
+    uploadArea.addEventListener("dragleave", (e) => {
+      e.preventDefault();
+      uploadArea.classList.remove("drag-over");
+    });
+
+    uploadArea.addEventListener("drop", (e) => {
+      e.preventDefault();
+      uploadArea.classList.remove("drag-over");
+
+      const files = e.dataTransfer.files;
+      if (files.length > 0 && files[0].type.startsWith("image/")) {
+        handleImageUpload(files[0]);
+      }
+    });
+
+    // File input change
+    fileInput.addEventListener("change", (e) => {
+      const file = e.target.files[0];
+      if (file && file.type.startsWith("image/")) {
+        handleImageUpload(file);
+      }
+    });
+
+    // Download button
+    downloadBtn.addEventListener("click", () => {
+      if (processedImageBlob) {
+        const url = URL.createObjectURL(processedImageBlob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = "background-removed.png";
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+      }
+    });
+
+    // Reset button
+    resetBtn.addEventListener("click", () => {
+      resetTool();
+    });
+
+    function handleImageUpload(file) {
+      // Show original image
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        document.getElementById("bgRemoveOriginal").src = e.target.result;
+      };
+      reader.readAsDataURL(file);
+
+      // Show processing indicator
+      uploadArea.style.display = "none";
+      processingSection.style.display = "block";
+      resultSection.style.display = "none";
+
+      // Simulate background removal (since we need API key for real implementation)
+      simulateBackgroundRemoval(file);
+    }
+
+    async function simulateBackgroundRemoval(file) {
+      // Check if config is loaded
+      if (!window.API_CONFIG) {
+        console.error(
+          "API_CONFIG not loaded. Make sure config.js is included before tools.js"
+        );
+        return fallbackToDemo(file);
+      }
+
+      // Get API key and URL from config
+      const API_KEY = window.API_CONFIG.REMOVE_BG_API_KEY;
+      const API_URL = window.API_CONFIG.REMOVE_BG_API_URL;
+
+      if (!API_KEY || API_KEY === "YOUR_REMOVE_BG_API_KEY_HERE") {
+        console.warn(
+          "Remove.bg API key not configured in config.js. Using demo mode."
+        );
+        console.log(
+          "To use real API: Edit assets/js/config.js and add your Remove.bg API key"
+        );
+        return fallbackToDemo(file);
+      }
+
+      // Validate API key format (Remove.bg keys are typically 22-28 characters)
+      if (API_KEY.length < 20 || API_KEY.length > 35) {
+        console.warn(
+          "API key format looks incorrect. Length should be 20-35 characters."
+        );
+        console.log("Your API key length:", API_KEY.length);
+        console.log(
+          "Please verify your API key from https://www.remove.bg/api"
+        );
+      }
+
+      try {
+        // Show original image
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          document.getElementById("bgRemoveOriginal").src = e.target.result;
+        };
+        reader.readAsDataURL(file);
+
+        // Prepare form data for API
+        const formData = new FormData();
+        formData.append("image_file", file);
+        formData.append("size", window.API_CONFIG.REMOVE_BG_SIZE || "auto");
+        formData.append("type", window.API_CONFIG.REMOVE_BG_TYPE || "auto");
+
+        if (window.API_CONFIG.DEBUG_MODE) {
+          console.log("Making API call to Remove.bg with settings:", {
+            size: window.API_CONFIG.REMOVE_BG_SIZE,
+            type: window.API_CONFIG.REMOVE_BG_TYPE,
+            url: API_URL,
+            keyLength: API_KEY.length,
+            keyPreview:
+              API_KEY.substring(0, 8) +
+              "..." +
+              API_KEY.substring(API_KEY.length - 4),
+          });
+        }
+
+        console.log("🚀 Starting background removal process...");
+
+        // Make API call to Remove.bg
+        const response = await fetch(API_URL, {
+          method: "POST",
+          headers: {
+            "X-Api-Key": API_KEY,
+          },
+          body: formData,
+        });
+
+        console.log(
+          "📡 API Response status:",
+          response.status,
+          response.statusText
+        );
+
+        if (!response.ok) {
+          const errorText = await response.text();
+          console.error("❌ API Error Details:", {
+            status: response.status,
+            statusText: response.statusText,
+            error: errorText,
+          });
+
+          // Specific error handling
+          if (response.status === 402) {
+            throw new Error(
+              "Payment Required: You've exceeded your monthly API limit. Please upgrade your plan or wait for next month."
+            );
+          } else if (response.status === 403) {
+            throw new Error(
+              "Forbidden: Invalid API key. Please check your API key in config.js"
+            );
+          } else if (response.status === 400) {
+            throw new Error(
+              "Bad Request: Invalid image format or size. Please try a different image."
+            );
+          } else {
+            throw new Error(
+              `API Error: ${response.status} - ${response.statusText}. ${errorText}`
+            );
+          }
+        }
+
+        console.log("✅ Background removal successful!");
+
+        // Get the processed image blob
+        const blob = await response.blob();
+        console.log("📊 Processed image info:", {
+          size: blob.size,
+          type: blob.type,
+        });
+
+        processedImageBlob = blob;
+
+        // Display the result
+        const url = URL.createObjectURL(blob);
+        document.getElementById("bgRemoveProcessed").src = url;
+
+        // Show result section
+        processingSection.style.display = "none";
+        resultSection.style.display = "block";
+
+        console.log("🎉 Background removal completed successfully!");
+      } catch (error) {
+        console.error("💥 Background removal failed:", error);
+
+        // Show error message to user with more specific guidance
+        let userMessage = "Background removal failed: ";
+
+        if (error.message.includes("Payment Required")) {
+          userMessage +=
+            "You've exceeded your monthly API limit (50 free images). Please upgrade your plan or wait for next month.";
+        } else if (error.message.includes("Forbidden")) {
+          userMessage +=
+            "Invalid API key. Please check your API key in config.js file.";
+        } else if (error.message.includes("Bad Request")) {
+          userMessage +=
+            "Invalid image format. Please try a JPG or PNG image under 12MB.";
+        } else if (error.message.includes("Network")) {
+          userMessage +=
+            "Network error. Please check your internet connection.";
+        } else {
+          userMessage += "Unknown error occurred. Check console for details.";
+        }
+
+        alert(`${userMessage}\n\nFalling back to demo mode...`);
+
+        // Fallback to demo mode if API fails
+        console.log("🔄 Falling back to demo mode...");
+        return fallbackToDemo(file);
+      }
+    }
+
+    function fallbackToDemo(file) {
+      setTimeout(() => {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          // Create a canvas to simulate the effect
+          const canvas = document.createElement("canvas");
+          const ctx = canvas.getContext("2d");
+          const img = new Image();
+
+          img.onload = () => {
+            canvas.width = img.width;
+            canvas.height = img.height;
+
+            // Draw the image
+            ctx.drawImage(img, 0, 0);
+
+            // Simulate background removal by adding transparency effect
+            const imageData = ctx.getImageData(
+              0,
+              0,
+              canvas.width,
+              canvas.height
+            );
+            const data = imageData.data;
+
+            // Simple edge detection for demo
+            for (let i = 0; i < data.length; i += 4) {
+              const r = data[i];
+              const g = data[i + 1];
+              const b = data[i + 2];
+
+              // Simple background detection (this is very basic)
+              const brightness = (r + g + b) / 3;
+              if (brightness > 200 || brightness < 50) {
+                data[i + 3] = 100; // Make semi-transparent
+              }
+            }
+
+            ctx.putImageData(imageData, 0, 0);
+
+            // Convert to blob and display
+            canvas.toBlob((blob) => {
+              processedImageBlob = blob;
+              const url = URL.createObjectURL(blob);
+              document.getElementById("bgRemoveProcessed").src = url;
+
+              // Show result
+              processingSection.style.display = "none";
+              resultSection.style.display = "block";
+            }, "image/png");
+          };
+
+          img.src = e.target.result;
+        };
+        reader.readAsDataURL(file);
+      }, 1000);
+    }
+
+    function resetTool() {
+      uploadArea.style.display = "block";
+      processingSection.style.display = "none";
+      resultSection.style.display = "none";
+      fileInput.value = "";
+      processedImageBlob = null;
+    }
   }
 }
 
-// Initialize when DOM is loaded
-document.addEventListener("DOMContentLoaded", () => {
-  console.log("DOM loaded, initializing WebTools");
+// Initialize WebTools when DOM is loaded
+document.addEventListener("DOMContentLoaded", function () {
+  console.log("DOM loaded, initializing WebTools...");
   window.webTools = new WebTools();
-  console.log("WebTools initialized:", window.webTools);
 });
