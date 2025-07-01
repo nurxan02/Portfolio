@@ -1898,7 +1898,7 @@ class WebTools {
             <div class="glass-background">
               <div class="glass-element" id="glassPreview">
                 <h4>Glass Effect</h4>
-                <p>This is a preview of your glass effect. The blur and transparency create a realistic glass appearance.</p>
+                <p class="shimmer">This is a preview of your glass effect. The blur and transparency create a realistic glass appearance.</p>
                 <button class="glass-demo-btn">Demo Button</button>
               </div>
             </div>
