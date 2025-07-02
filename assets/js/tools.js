@@ -2068,7 +2068,7 @@ class WebTools {
             <div class="glass-control">
               <label for="glassBlur">Backdrop Blur</label>
               <div class="range-control">
-                <input type="range" id="glassBlur" min="0" max="50" value="11" step="1" class="glass-slider">
+                <input type="range" id="glassBlur" min="0" max="50" value="21" step="1" class="glass-slider">
                 <span id="glassBlurValue" class="glass-value">10px</span>
               </div>
             </div>
