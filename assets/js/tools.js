@@ -2062,149 +2062,156 @@ class WebTools {
     return `
       <div class="glass-effect-generator">
         <div class="glass-controls">
-          <div class="control-section">
-            <h3>Glass Effect Controls</h3>
+          <div class="glass-control-group">
+            <h4>Glass Effect Controls</h4>
             
-            <div class="control-group">
+            <div class="glass-control">
               <label for="glassBlur">Backdrop Blur</label>
               <div class="range-control">
-                <input type="range" id="glassBlur" min="0" max="50" value="10" step="1">
-                <span id="glassBlurValue">10px</span>
+                <input type="range" id="glassBlur" min="0" max="50" value="10" step="1" class="glass-slider">
+                <span id="glassBlurValue" class="glass-value">10px</span>
               </div>
             </div>
             
-            <div class="control-group">
+            <div class="glass-control">
               <label for="glassOpacity">Background Opacity</label>
               <div class="range-control">
-                <input type="range" id="glassOpacity" min="0" max="100" value="20" step="1">
-                <span id="glassOpacityValue">0.20</span>
+                <input type="range" id="glassOpacity" min="0" max="100" value="20" step="1" class="glass-slider">
+                <span id="glassOpacityValue" class="glass-value">0.20</span>
               </div>
             </div>
             
-            <div class="control-group">
+            <div class="glass-control">
               <label for="glassBorderOpacity">Border Opacity</label>
               <div class="range-control">
-                <input type="range" id="glassBorderOpacity" min="0" max="100" value="30" step="1">
-                <span id="glassBorderOpacityValue">0.30</span>
+                <input type="range" id="glassBorderOpacity" min="0" max="100" value="30" step="1" class="glass-slider">
+                <span id="glassBorderOpacityValue" class="glass-value">0.30</span>
               </div>
             </div>
             
-            <div class="control-group">
+            <div class="glass-control">
               <label for="glassBorderRadius">Border Radius</label>
               <div class="range-control">
-                <input type="range" id="glassBorderRadius" min="0" max="50" value="16" step="1">
-                <span id="glassBorderRadiusValue">16px</span>
+                <input type="range" id="glassBorderRadius" min="0" max="50" value="16" step="1" class="glass-slider">
+                <span id="glassBorderRadiusValue" class="glass-value">16px</span>
               </div>
             </div>
+          </div>
+          
+          <div class="glass-control-group">
+            <h4>Filters</h4>
             
-            <div class="control-group">
+            <div class="glass-control">
               <label for="glassSaturation">Saturation</label>
               <div class="range-control">
-                <input type="range" id="glassSaturation" min="50" max="200" value="100" step="1">
-                <span id="glassSaturationValue">100%</span>
+                <input type="range" id="glassSaturation" min="50" max="200" value="100" step="1" class="glass-slider">
+                <span id="glassSaturationValue" class="glass-value">100%</span>
               </div>
             </div>
             
-            <div class="control-group">
+            <div class="glass-control">
               <label for="glassContrast">Contrast</label>
               <div class="range-control">
-                <input type="range" id="glassContrast" min="50" max="200" value="100" step="1">
-                <span id="glassContrastValue">100%</span>
+                <input type="range" id="glassContrast" min="50" max="200" value="100" step="1" class="glass-slider">
+                <span id="glassContrastValue" class="glass-value">100%</span>
               </div>
             </div>
             
-            <div class="control-group">
+            <div class="glass-control">
               <label for="glassBrightness">Brightness</label>
               <div class="range-control">
-                <input type="range" id="glassBrightness" min="50" max="150" value="100" step="1">
-                <span id="glassBrightnessValue">100%</span>
+                <input type="range" id="glassBrightness" min="50" max="150" value="100" step="1" class="glass-slider">
+                <span id="glassBrightnessValue" class="glass-value">100%</span>
               </div>
             </div>
           </div>
           
-          <div class="control-section">
-            <h3>Shadow & Border</h3>
+          <div class="glass-control-group">
+            <h4>Shadow</h4>
             
-            <div class="control-group">
+            <div class="glass-control">
               <label for="glassShadowX">Shadow X</label>
               <div class="range-control">
-                <input type="range" id="glassShadowX" min="-50" max="50" value="0" step="1">
-                <span id="glassShadowXValue">0px</span>
+                <input type="range" id="glassShadowX" min="-50" max="50" value="0" step="1" class="glass-slider">
+                <span id="glassShadowXValue" class="glass-value">0px</span>
               </div>
             </div>
             
-            <div class="control-group">
+            <div class="glass-control">
               <label for="glassShadowY">Shadow Y</label>
               <div class="range-control">
-                <input type="range" id="glassShadowY" min="-50" max="50" value="8" step="1">
-                <span id="glassShadowYValue">8px</span>
+                <input type="range" id="glassShadowY" min="-50" max="50" value="8" step="1" class="glass-slider">
+                <span id="glassShadowYValue" class="glass-value">8px</span>
               </div>
             </div>
             
-            <div class="control-group">
+            <div class="glass-control">
               <label for="glassShadowBlur">Shadow Blur</label>
               <div class="range-control">
-                <input type="range" id="glassShadowBlur" min="0" max="100" value="32" step="1">
-                <span id="glassShadowBlurValue">32px</span>
+                <input type="range" id="glassShadowBlur" min="0" max="100" value="32" step="1" class="glass-slider">
+                <span id="glassShadowBlurValue" class="glass-value">32px</span>
               </div>
             </div>
             
-            <div class="control-group">
+            <div class="glass-control">
               <label for="glassShadowOpacity">Shadow Opacity</label>
               <div class="range-control">
-                <input type="range" id="glassShadowOpacity" min="0" max="100" value="37" step="1">
-                <span id="glassShadowOpacityValue">0.37</span>
+                <input type="range" id="glassShadowOpacity" min="0" max="100" value="37" step="1" class="glass-slider">
+                <span id="glassShadowOpacityValue" class="glass-value">0.37</span>
               </div>
             </div>
           </div>
           
-          <div class="control-section">
-            <h3>Color & Style</h3>
+          <div class="glass-control-group">
+            <h4>Colors</h4>
             
-            <div class="control-group">
+            <div class="glass-control">
               <label for="glassBackgroundColor">Background Color</label>
-              <input type="color" id="glassBackgroundColor" value="#ffffff">
+              <div class="color-input-wrapper">
+                <input type="color" id="glassBackgroundColor" value="#ffffff" class="color-input">
+                <input type="text" id="glassBackgroundHex" value="#ffffff" class="color-hex">
+              </div>
             </div>
             
-            <div class="control-group">
+            <div class="glass-control">
               <label for="glassBorderColor">Border Color</label>
-              <input type="color" id="glassBorderColor" value="#ffffff">
+              <div class="color-input-wrapper">
+                <input type="color" id="glassBorderColor" value="#ffffff" class="color-input">
+                <input type="text" id="glassBorderHex" value="#ffffff" class="color-hex">
+              </div>
             </div>
-            
-            <div class="control-group">
-              <label for="glassPreset">Glass Presets</label>
-              <select id="glassPreset">
-                <option value="custom">Custom</option>
-                <option value="frosted">Frosted Glass</option>
-                <option value="clear">Clear Glass</option>
-                <option value="tinted">Tinted Glass</option>
-                <option value="colorful">Colorful Glass</option>
-                <option value="dark">Dark Glass</option>
-                <option value="minimal">Minimal Glass</option>
-              </select>
+          </div>
+          
+          <div class="glass-control-group">
+            <h4>Presets</h4>
+            <div class="glass-presets">
+              <button class="preset-btn active" data-preset="custom">Custom</button>
+              <button class="preset-btn" data-preset="frosted">Frosted</button>
+              <button class="preset-btn" data-preset="clear">Clear</button>
+              <button class="preset-btn" data-preset="tinted">Tinted</button>
+              <button class="preset-btn" data-preset="colorful">Colorful</button>
+              <button class="preset-btn" data-preset="dark">Dark</button>
+              <button class="preset-btn" data-preset="minimal">Minimal</button>
             </div>
           </div>
         </div>
         
-        <div class="glass-preview-section">
-          <h3>Preview</h3>
-          <div class="glass-preview-container">
-            <div class="glass-background">
-              <div class="glass-element" id="glassPreview">
-                <h4>Glass Effect</h4>
-                <p class="shimmer">This is a preview of your glass effect. The blur and transparency create a realistic glass appearance.</p>
-                <button class="glass-demo-btn">Demo Button</button>
-              </div>
+        <div class="glass-preview">
+          <div class="glass-demo">
+            <div class="glass-element" id="glassPreview">
+              <h4>Glass Effect</h4>
+              <p>This is a preview of your glass effect. The blur and transparency create a realistic glass appearance.</p>
+              <button style="background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.3); color: white; padding: 8px 16px; border-radius: 8px; cursor: pointer;">Demo Button</button>
             </div>
           </div>
           
-          <div class="glass-code-section">
+          <div class="glass-css-output">
             <h4>Generated CSS</h4>
-            <textarea id="glassCSS" readonly></textarea>
+            <div class="glass-css-code" id="glassCSS"></div>
             <div class="glass-actions">
               <button class="glass-btn primary" onclick="webTools.copyGlassCSS()">Copy CSS</button>
-              <button class="glass-btn secondary" onclick="webTools.downloadGlassCSS()">Download CSS</button>
-              <button class="glass-btn secondary" onclick="webTools.resetGlassEffect()">Reset</button>
+              <button class="glass-btn" onclick="webTools.downloadGlassCSS()">Download CSS</button>
+              <button class="glass-btn" onclick="webTools.resetGlassEffect()">Reset</button>
             </div>
           </div>
         </div>
@@ -2986,7 +2993,7 @@ class WebTools {
   pointer-events: none;
 }`;
 
-      cssOutput.value = cssCode;
+      cssOutput.textContent = cssCode;
 
       // Update value displays
       document.getElementById("glassBlurValue").textContent = blur + "px";
@@ -3034,9 +3041,52 @@ class WebTools {
       }
     });
 
+    // Add event listeners for hex color inputs
+    const bgColorInput = document.getElementById("glassBackgroundColor");
+    const bgHexInput = document.getElementById("glassBackgroundHex");
+    const borderColorInput = document.getElementById("glassBorderColor");
+    const borderHexInput = document.getElementById("glassBorderHex");
+
+    if (bgColorInput && bgHexInput) {
+      bgColorInput.addEventListener("input", (e) => {
+        bgHexInput.value = e.target.value;
+        updateGlassEffect();
+      });
+
+      bgHexInput.addEventListener("input", (e) => {
+        if (e.target.value.match(/^#[0-9A-Fa-f]{6}$/)) {
+          bgColorInput.value = e.target.value;
+          updateGlassEffect();
+        }
+      });
+    }
+
+    if (borderColorInput && borderHexInput) {
+      borderColorInput.addEventListener("input", (e) => {
+        borderHexInput.value = e.target.value;
+        updateGlassEffect();
+      });
+
+      borderHexInput.addEventListener("input", (e) => {
+        if (e.target.value.match(/^#[0-9A-Fa-f]{6}$/)) {
+          borderColorInput.value = e.target.value;
+          updateGlassEffect();
+        }
+      });
+    }
+
     // Preset handling
-    document.getElementById("glassPreset").addEventListener("change", (e) => {
-      this.applyGlassPreset(e.target.value);
+    document.querySelectorAll(".preset-btn").forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        // Remove active class from all preset buttons
+        document
+          .querySelectorAll(".preset-btn")
+          .forEach((b) => b.classList.remove("active"));
+        // Add active class to clicked button
+        e.target.classList.add("active");
+        // Apply the preset
+        this.applyGlassPreset(e.target.dataset.preset);
+      });
     });
 
     // Initial update
@@ -3507,6 +3557,90 @@ class WebTools {
       fileInput.value = "";
       processedImageBlob = null;
     }
+  }
+
+  // Glass Effect Generator Methods
+  copyGlassCSS() {
+    const cssElement = document.getElementById("glassCSS");
+    if (cssElement) {
+      const cssText = cssElement.textContent;
+
+      // Create a temporary textarea to copy the text
+      const tempTextarea = document.createElement("textarea");
+      tempTextarea.value = cssText;
+      document.body.appendChild(tempTextarea);
+      tempTextarea.select();
+      document.execCommand("copy");
+      document.body.removeChild(tempTextarea);
+
+      // Show feedback
+      const copyBtn = document.querySelector(".glass-btn.primary");
+      const originalText = copyBtn.textContent;
+      copyBtn.textContent = "Copied!";
+      copyBtn.style.background = "#34c759";
+
+      setTimeout(() => {
+        copyBtn.textContent = originalText;
+        copyBtn.style.background = "#007aff";
+      }, 2000);
+    }
+  }
+
+  downloadGlassCSS() {
+    const cssElement = document.getElementById("glassCSS");
+    if (cssElement) {
+      const cssText = cssElement.textContent;
+      const blob = new Blob([cssText], { type: "text/css" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "glass-effect.css";
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }
+  }
+
+  resetGlassEffect() {
+    // Reset all glass effect controls to default values
+    const controls = {
+      glassBlur: 10,
+      glassOpacity: 20,
+      glassBorderOpacity: 30,
+      glassBorderRadius: 16,
+      glassSaturation: 100,
+      glassContrast: 100,
+      glassBrightness: 100,
+      glassShadowX: 0,
+      glassShadowY: 8,
+      glassShadowBlur: 32,
+      glassShadowOpacity: 37,
+      glassBackgroundColor: "#ffffff",
+      glassBorderColor: "#ffffff",
+    };
+
+    Object.keys(controls).forEach((id) => {
+      const element = document.getElementById(id);
+      if (element) {
+        element.value = controls[id];
+        // Trigger input event to update the preview
+        element.dispatchEvent(new Event("input"));
+      }
+    });
+
+    // Reset preset selector
+    const presetBtns = document.querySelectorAll(".preset-btn");
+    presetBtns.forEach((btn) => btn.classList.remove("active"));
+    document
+      .querySelector('.preset-btn[data-preset="custom"]')
+      ?.classList.add("active");
+
+    // Reset hex color inputs
+    const bgHexInput = document.getElementById("glassBackgroundHex");
+    const borderHexInput = document.getElementById("glassBorderHex");
+    if (bgHexInput) bgHexInput.value = "#ffffff";
+    if (borderHexInput) borderHexInput.value = "#ffffff";
   }
 }
 

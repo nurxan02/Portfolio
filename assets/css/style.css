@@ -1,3 +1,22 @@
+/* Skip link for accessibility and SEO */
+.skip-link {
+  position: absolute;
+  top: -42px;
+  left: 6px;
+  background: #007aff;
+  color: white;
+  padding: 8px;
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: 600;
+  z-index: 9999;
+  transition: top 0.3s;
+}
+
+.skip-link:focus {
+  top: 6px;
+}
+
 @font-face {
   font-family: "SF Pro Display";
   src: url("../../fonts/San Francisco Pro Display/SF-Pro-Display-Thin.otf")
