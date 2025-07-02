@@ -2068,7 +2068,7 @@ class WebTools {
             <div class="glass-control">
               <label for="glassBlur">Backdrop Blur</label>
               <div class="range-control">
-                <input type="range" id="glassBlur" min="0" max="50" value="10" step="1" class="glass-slider">
+                <input type="range" id="glassBlur" min="0" max="50" value="11" step="1" class="glass-slider">
                 <span id="glassBlurValue" class="glass-value">10px</span>
               </div>
             </div>
@@ -2076,7 +2076,7 @@ class WebTools {
             <div class="glass-control">
               <label for="glassOpacity">Background Opacity</label>
               <div class="range-control">
-                <input type="range" id="glassOpacity" min="0" max="100" value="20" step="1" class="glass-slider">
+                <input type="range" id="glassOpacity" min="0" max="100" value="10" step="1" class="glass-slider">
                 <span id="glassOpacityValue" class="glass-value">0.20</span>
               </div>
             </div>
@@ -2092,7 +2092,7 @@ class WebTools {
             <div class="glass-control">
               <label for="glassBorderRadius">Border Radius</label>
               <div class="range-control">
-                <input type="range" id="glassBorderRadius" min="0" max="50" value="16" step="1" class="glass-slider">
+                <input type="range" id="glassBorderRadius" min="0" max="50" value="22" step="1" class="glass-slider">
                 <span id="glassBorderRadiusValue" class="glass-value">16px</span>
               </div>
             </div>
@@ -2104,7 +2104,7 @@ class WebTools {
             <div class="glass-control">
               <label for="glassSaturation">Saturation</label>
               <div class="range-control">
-                <input type="range" id="glassSaturation" min="50" max="200" value="100" step="1" class="glass-slider">
+                <input type="range" id="glassSaturation" min="50" max="200" value="110" step="1" class="glass-slider">
                 <span id="glassSaturationValue" class="glass-value">100%</span>
               </div>
             </div>
@@ -2112,7 +2112,7 @@ class WebTools {
             <div class="glass-control">
               <label for="glassContrast">Contrast</label>
               <div class="range-control">
-                <input type="range" id="glassContrast" min="50" max="200" value="100" step="1" class="glass-slider">
+                <input type="range" id="glassContrast" min="50" max="200" value="127" step="1" class="glass-slider">
                 <span id="glassContrastValue" class="glass-value">100%</span>
               </div>
             </div>
@@ -2120,7 +2120,7 @@ class WebTools {
             <div class="glass-control">
               <label for="glassBrightness">Brightness</label>
               <div class="range-control">
-                <input type="range" id="glassBrightness" min="50" max="150" value="100" step="1" class="glass-slider">
+                <input type="range" id="glassBrightness" min="50" max="150" value="74" step="1" class="glass-slider">
                 <span id="glassBrightnessValue" class="glass-value">100%</span>
               </div>
             </div>
