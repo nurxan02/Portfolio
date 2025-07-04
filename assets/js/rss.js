@@ -167,6 +167,10 @@ class RSSFeedHandler {
         `
           )
           .join("")}
+        <button class="show-more-categories" id="showMoreCategories">
+          <span>Show More</span>
+          <i class="fas fa-chevron-down"></i>
+        </button>
       `;
 
       // Add click listeners to filter buttons
@@ -175,6 +179,9 @@ class RSSFeedHandler {
           this.handleCategoryFilter(btn.dataset.filter);
         });
       });
+
+      // Add show more functionality
+      this.setupShowMoreCategories();
     }
   }
 
@@ -755,6 +762,29 @@ class RSSFeedHandler {
     errorEl.style.display = "none";
 
     this.loadRSSFeed();
+  }
+
+  setupShowMoreCategories() {
+    const showMoreBtn = document.getElementById("showMoreCategories");
+    const filterContainer = document.getElementById("rssFilterButtons");
+
+    if (showMoreBtn && filterContainer) {
+      showMoreBtn.addEventListener("click", () => {
+        const isExpanded = filterContainer.classList.contains("show-all");
+
+        if (isExpanded) {
+          // Collapse categories
+          filterContainer.classList.remove("show-all");
+          showMoreBtn.classList.remove("expanded");
+          showMoreBtn.querySelector("span").textContent = "Show More";
+        } else {
+          // Expand categories
+          filterContainer.classList.add("show-all");
+          showMoreBtn.classList.add("expanded");
+          showMoreBtn.querySelector("span").textContent = "Show Less";
+        }
+      });
+    }
   }
 }
 

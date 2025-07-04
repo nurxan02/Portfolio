@@ -640,6 +640,50 @@
   color: var(--text-color);
 }
 
+/* Show More Categories Feature */
+.show-more-categories {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  background: #f8f9fa;
+  border: 2px solid #e5e5e5;
+  border-radius: 25px;
+  color: #007aff;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.show-more-categories:hover {
+  background: #007aff;
+  color: white;
+  border-color: #007aff;
+}
+
+.show-more-categories i {
+  font-size: 12px;
+  transition: transform 0.3s ease;
+}
+
+.show-more-categories.expanded i {
+  transform: rotate(180deg);
+}
+
+.dark-mode .show-more-categories {
+  background: var(--card-bg);
+  border-color: rgba(255, 255, 255, 0.1);
+  color: #007aff;
+}
+
+.dark-mode .show-more-categories:hover {
+  background: #007aff;
+  color: white;
+  border-color: #007aff;
+}
+
 /* Responsive Design for RSS Controls */
 @media (max-width: 768px) {
   .rss-controls {
@@ -658,6 +702,33 @@
 
   .filter-buttons {
     gap: 8px;
+    position: relative;
+  }
+
+  /* Hide categories beyond first 6 on mobile (including "All Articles") */
+  .filter-btn:nth-child(n + 7) {
+    display: none;
+  }
+
+  .filter-buttons.show-all .filter-btn {
+    display: flex;
+  }
+
+  .show-more-categories {
+    padding: 8px 14px;
+    font-size: 12px;
+  }
+
+  /* Always show "Show More" button on mobile */
+  .show-more-categories {
+    display: flex;
+  }
+}
+
+/* Hide "Show More" button on desktop */
+@media (min-width: 769px) {
+  .show-more-categories {
+    display: none;
   }
 }
 
@@ -990,8 +1061,8 @@
 }
 
 .retry-btn {
-  background: #007aff;
-  color: white;
+  background: #ffffff;
+  color: rgb(255, 0, 0);
   border: none;
   padding: 12px 25px;
   border-radius: 25px;
