@@ -282,6 +282,8 @@
   align-items: center;
   gap: 30px;
   margin-top: 40px;
+  padding: 10px;
+  flex-wrap: nowrap;
 }
 
 .prev-btn,
@@ -316,22 +318,28 @@
 
 .slider-dots {
   display: flex;
-  gap: 12px;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  padding: 5px;
 }
 
 .dot {
-  width: 12px;
-  height: 12px;
+  width: 14px;
+  height: 14px;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.4);
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
+  border: 2px solid transparent;
+  box-sizing: border-box;
 }
 
 .dot.active {
   background: white;
   transform: scale(1.2);
+  border-color: rgba(255, 255, 255, 0.8);
 }
 
 .dot:hover {
@@ -342,14 +350,15 @@
 .dot.active::after {
   content: "";
   position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 20px;
-  height: 20px;
+  top: -68%;
+  left: -68%;
+  width: 24px;
+  height: 24px;
   border: 2px solid rgba(255, 255, 255, 0.3);
   border-radius: 50%;
   transform: translate(-50%, -50%);
   animation: pulse 2s infinite;
+  box-sizing: border-box;
 }
 .section-title {
   text-align: start !important;
@@ -406,6 +415,8 @@
   .slider-controls {
     gap: 20px;
     margin-top: 30px;
+    flex-wrap: wrap;
+    justify-content: center;
   }
 
   .prev-btn,
@@ -413,6 +424,21 @@
     width: 40px;
     height: 40px;
     font-size: 20px;
+  }
+
+  .slider-dots {
+    gap: 12px;
+    padding: 8px;
+  }
+
+  .dot {
+    width: 12px;
+    height: 12px;
+  }
+
+  .dot.active::after {
+    width: 20px;
+    height: 20px;
   }
 }
 
@@ -456,6 +482,52 @@
   .tech {
     font-size: 11px;
     padding: 4px 8px;
+  }
+}
+
+/* Additional mobile fixes for slider dots */
+@media (max-width: 480px) {
+  .slider-controls {
+    gap: 15px;
+    padding: 0 10px;
+  }
+
+  .slider-dots {
+    gap: 10px;
+    padding: 10px;
+  }
+
+  .dot {
+    width: 10px;
+    height: 10px;
+  }
+
+  .dot.active::after {
+    width: 18px;
+    height: 18px;
+    border-width: 1px;
+  }
+}
+
+@media (max-width: 320px) {
+  .slider-controls {
+    gap: 12px;
+    margin-top: 25px;
+  }
+
+  .slider-dots {
+    gap: 8px;
+    padding: 8px;
+  }
+
+  .dot {
+    width: 8px;
+    height: 8px;
+  }
+
+  .dot.active::after {
+    width: 16px;
+    height: 16px;
   }
 }
 

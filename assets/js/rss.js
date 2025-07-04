@@ -187,24 +187,368 @@ class RSSFeedHandler {
 
   getCategoryIcon(category) {
     const iconMap = {
+      // Web Development & Programming
       "Web Development": "code",
+      webdev: "code",
       Programming: "laptop-code",
-      JavaScript: "js-square",
-      Python: "python",
-      React: "react",
-      "Node.js": "node-js",
+      programming: "laptop-code",
+      JavaScript: "js-square fab",
+      Python: "python fab",
+      React: "react fab",
+      "Node.js": "node-js fab",
+      Java: "java fab",
+      java: "java fab",
+
+      // Infrastructure & Tools
       Database: "database",
       DevOps: "tools",
-      "UI/UX": "palette",
-      Mobile: "mobile-alt",
-      Security: "shield-alt",
       Cloud: "cloud",
+      aws: "aws fab",
+      virtualmachine: "server",
+
+      // Design & UX
+      "UI/UX": "palette",
+      Design: "palette",
+
+      // Mobile & Platforms
+      Mobile: "mobile-alt",
+      iOS: "apple fab",
+      Android: "android fab",
+
+      // Security & Privacy
+      Security: "shield-alt",
+
+      // AI & Data Science
       "AI/ML": "brain",
+      ai: "brain",
+      data: "chart-bar",
+
+      // Business & Management
+      Business: "briefcase",
+      business: "briefcase",
+      Management: "tasks",
+
+      // Community & Culture
+      Community: "users",
+      community: "users",
+      "Internet Culture": "globe",
+
+      // Learning & Education
       Tutorial: "graduation-cap",
+      Education: "graduation-cap",
+
+      // News & Media
       News: "newspaper",
+      Podcast: "podcast",
+      podcast: "podcast",
+
+      // Development Practices
+      "vibe-coding": "code",
+      "rapid-prototyping": "rocket",
+      "stack-overflow-for-business": "stack-overflow fab",
+      "knowledge-management": "brain",
+      "se-stackoverflow": "stack-overflow fab",
+      "se-tech": "microchip",
+
+      // Browsers & Technology
+      Firefox: "firefox fab",
+      Chrome: "chrome fab",
+      Safari: "safari fab",
+      Edge: "edge fab",
+      Opera: "opera fab",
+      Internet: "internet-explorer fab",
+
+      // Professional Development
+      "leaders-of-code": "user-tie",
+      "Developer Experience": "code",
+      Career: "user-tie",
+
+      // Content Types
+      Essays: "file-text",
+      Articles: "file-alt",
       Opinion: "comment",
       Review: "star",
+
+      // Organizational
+      Administrative: "cog",
+      "ai-coding": "brain",
+      Anonym: "user-secret",
+
+      // Software & Tools
+      "Internet Policy": "gavel",
+      "Laws of Software": "balance-scale",
+
+      // General Categories
       General: "file-alt",
+      Technology: "microchip",
+      Uncategorized: "question-circle",
+
+      // Programming Languages & Frameworks
+      TypeScript: "js-square fab",
+      Vue: "vuejs fab",
+      Angular: "angular fab",
+      Laravel: "laravel fab",
+      Symfony: "symfony fab",
+      Bootstrap: "bootstrap fab",
+      Sass: "sass fab",
+      Less: "less fab",
+      PHP: "php fab",
+      Swift: "swift fab",
+      Unity: "unity fab",
+      Docker: "docker fab",
+
+      // Cloud & Hosting Platforms
+      AWS: "aws fab",
+      Azure: "microsoft fab",
+      "Google Cloud": "google fab",
+      Google: "google fab",
+      Apple: "apple fab",
+      Microsoft: "microsoft fab",
+      IBM: "microsoft fab",
+      Oracle: "database",
+      Salesforce: "salesforce fab",
+      Shopify: "shopify fab",
+      WordPress: "wordpress fab",
+      Drupal: "drupal fab",
+      Joomla: "joomla fab",
+      DigitalOcean: "digital-ocean fab",
+      Heroku: "cloud",
+      Netlify: "cloud",
+      Vercel: "cloud",
+      Cloudflare: "cloudflare fab",
+
+      // Version Control & Code Hosting
+      GitHub: "github fab",
+      GitLab: "gitlab fab",
+      Git: "git-alt fab",
+      Bitbucket: "bitbucket fab",
+      CodePen: "codepen fab",
+
+      // Social Media & Communication
+      Slack: "slack fab",
+      Discord: "discord fab",
+      Teams: "microsoft fab",
+      Skype: "skype fab",
+      Telegram: "telegram fab",
+      WhatsApp: "whatsapp fab",
+      LinkedIn: "linkedin fab",
+      Twitter: "twitter fab",
+      Facebook: "facebook fab",
+      Instagram: "instagram fab",
+      YouTube: "youtube fab",
+      TikTok: "tiktok fab",
+      Reddit: "reddit fab",
+      Medium: "medium fab",
+      Dev: "dev fab",
+      Hashnode: "hashnode fab",
+
+      // Design & Creative Tools
+      Figma: "figma fab",
+      Sketch: "sketch fab",
+      Adobe: "adobe fab",
+      Photoshop: "adobe fab",
+      Illustrator: "adobe fab",
+      "After Effects": "adobe fab",
+      Dribbble: "dribbble fab",
+      Behance: "behance fab",
+
+      // E-commerce & CMS
+      Magento: "shopping-bag",
+      WooCommerce: "wordpress fab",
+      Opencart: "shopping-cart",
+      Prestashop: "shopping-bag",
+
+      // Databases & Storage
+      MongoDB: "envira fab",
+      Redis: "database",
+      PostgreSQL: "database",
+      MySQL: "database",
+      MariaDB: "database",
+      SQLite: "database",
+      Firebase: "google fab",
+
+      // Operating Systems
+      Windows: "windows fab",
+      macOS: "apple fab",
+      Linux: "linux fab",
+      Ubuntu: "ubuntu fab",
+      CentOS: "centos fab",
+      Debian: "linux fab",
+      RedHat: "redhat fab",
+      SUSE: "suse fab",
+      FreeBSD: "freebsd fab",
+
+      // Payment & Financial
+      PayPal: "paypal fab",
+      Stripe: "stripe fab",
+      Square: "square fab",
+      Visa: "cc-visa fab",
+      MasterCard: "cc-mastercard fab",
+      "American Express": "cc-amex fab",
+      Bitcoin: "bitcoin fab",
+      Ethereum: "ethereum fab",
+
+      // Gaming & Entertainment
+      Steam: "steam fab",
+      PlayStation: "playstation fab",
+      Xbox: "xbox fab",
+      Nintendo: "gamepad",
+      Twitch: "twitch fab",
+
+      // Analytics & Marketing Tools
+      "Google Analytics": "google fab",
+      "Google Ads": "google fab",
+      "Facebook Ads": "facebook fab",
+      Mailchimp: "mailchimp fab",
+      HubSpot: "hubspot fab",
+
+      // Additional Tech Categories
+      Frontend: "desktop",
+      Backend: "server",
+      Fullstack: "layer-group",
+      API: "plug",
+      Framework: "cubes",
+      Library: "books",
+
+      // DevOps & Operations
+      Kubernetes: "dharmachakra",
+      CI: "sync-alt",
+      CD: "arrow-right",
+
+      // Methodologies
+      Agile: "sync",
+      Scrum: "circle",
+      Testing: "vial",
+
+      // Data & Analytics
+      Analytics: "chart-line",
+      "Big Data": "database",
+      Visualization: "chart-pie",
+
+      // Emerging Tech
+      Blockchain: "link",
+      IoT: "wifi",
+      VR: "vr-cardboard",
+      AR: "eye",
+
+      // Software Architecture
+      Microservices: "cubes",
+      Monolith: "cube",
+      Serverless: "cloud",
+
+      // Quality & Standards
+      "Code Quality": "check-double",
+      Performance: "tachometer-alt",
+      Optimization: "sliders-h",
+
+      // Learning Resources
+      Course: "chalkboard-teacher",
+      Workshop: "tools",
+      Certification: "certificate",
+
+      // Industry
+      Startup: "rocket",
+      Enterprise: "building",
+      Freelance: "handshake",
+
+      // Miscellaneous
+      "Open Source": "code-branch",
+      License: "certificate",
+      Documentation: "book",
+      Research: "search",
+
+      // Additional Brands
+      Spotify: "spotify fab",
+      Netflix: "film",
+      Uber: "uber fab",
+      Lyft: "lyft fab",
+      Airbnb: "airbnb fab",
+      Pinterest: "pinterest fab",
+      Snapchat: "snapchat fab",
+      Zoom: "video",
+      Notion: "book",
+      Trello: "trello fab",
+      Asana: "tasks",
+      Jira: "tasks",
+      Confluence: "confluence fab",
+      Jenkins: "tools",
+      TeamCity: "tools",
+      Bamboo: "tools",
+      CircleCI: "circle",
+      Travis: "travis fab",
+      Ansible: "cube",
+      Terraform: "cube",
+      Vagrant: "vagrant fab",
+      VirtualBox: "box",
+      VMware: "box",
+      Grafana: "chart-line",
+      Prometheus: "chart-area",
+      ElasticSearch: "search",
+      Kibana: "chart-pie",
+      Logstash: "list",
+      Splunk: "chart-line",
+      Datadog: "chart-line",
+      NewRelic: "chart-line",
+      Sentry: "bug",
+      RollBar: "bug",
+      BugSnag: "bug",
+      Mixpanel: "chart-pie",
+      Amplitude: "chart-line",
+      Segment: "chart-pie",
+      Hotjar: "chart-area",
+      FullStory: "video",
+      LogRocket: "video",
+      Intercom: "comment",
+      Zendesk: "headset",
+      Freshdesk: "headset",
+      ServiceNow: "cog",
+      Okta: "key",
+      Auth0: "key",
+      Cognito: "key",
+      OneLogin: "key",
+      Duo: "shield-alt",
+      "1Password": "key",
+      LastPass: "key",
+      Bitwarden: "key",
+      KeePass: "key",
+      Dashlane: "key",
+      Postman: "paper-plane",
+      Insomnia: "moon",
+      Swagger: "book",
+      Stoplight: "traffic-light",
+      Apiary: "bee",
+      "API Blueprint": "file-code",
+      OpenAPI: "file-code",
+      GraphQL: "project-diagram",
+      Apollo: "rocket",
+      Prisma: "database",
+      Hasura: "database",
+      Strapi: "cms",
+      Contentful: "cms fab",
+      Sanity: "cms",
+      Ghost: "ghost",
+      Jekyll: "gem",
+      Hugo: "rocket",
+      Gatsby: "gatsby fab",
+      Next: "react fab",
+      Nuxt: "vuejs fab",
+      Svelte: "fire",
+      Elm: "leaf",
+      Rust: "rust fab",
+      Go: "golang fab",
+      Kotlin: "android fab",
+      Dart: "google fab",
+      Flutter: "google fab",
+      Xamarin: "microsoft fab",
+      Ionic: "ionic fab",
+      Cordova: "mobile-alt",
+      PhoneGap: "mobile-alt",
+      Electron: "desktop",
+      Tauri: "desktop",
+      PWA: "mobile-alt",
+      WebAssembly: "cube",
+      Deno: "javascript fab",
+      Bun: "javascript fab",
     };
 
     return iconMap[category] || "file-alt";
@@ -219,81 +563,202 @@ class RSSFeedHandler {
     if (
       content.includes("javascript") ||
       content.includes("js ") ||
-      content.includes("node")
+      content.includes("node") ||
+      content.includes("typescript")
     ) {
       return "JavaScript";
     } else if (
       content.includes("python") ||
       content.includes("django") ||
-      content.includes("flask")
+      content.includes("flask") ||
+      content.includes("pytorch") ||
+      content.includes("tensorflow")
     ) {
       return "Python";
     } else if (
       content.includes("react") ||
       content.includes("vue") ||
-      content.includes("angular")
+      content.includes("angular") ||
+      content.includes("frontend") ||
+      content.includes("component")
     ) {
       return "React";
     } else if (
+      (content.includes("java") && !content.includes("javascript")) ||
+      content.includes("spring") ||
+      content.includes("jvm")
+    ) {
+      return "java";
+    } else if (
       content.includes("database") ||
       content.includes("sql") ||
-      content.includes("mongodb")
+      content.includes("mongodb") ||
+      content.includes("mysql") ||
+      content.includes("postgresql")
     ) {
       return "Database";
     } else if (
       content.includes("security") ||
       content.includes("vulnerability") ||
-      content.includes("auth")
+      content.includes("auth") ||
+      content.includes("encryption") ||
+      content.includes("cybersecurity")
     ) {
       return "Security";
     } else if (
       content.includes("cloud") ||
       content.includes("aws") ||
-      content.includes("azure")
+      content.includes("azure") ||
+      content.includes("gcp") ||
+      content.includes("serverless")
     ) {
       return "Cloud";
     } else if (
       content.includes("ai") ||
       content.includes("machine learning") ||
-      content.includes("ml ")
+      content.includes("ml ") ||
+      content.includes("artificial intelligence") ||
+      content.includes("neural network")
     ) {
       return "AI/ML";
     } else if (
       content.includes("tutorial") ||
       content.includes("how to") ||
-      content.includes("guide")
+      content.includes("guide") ||
+      content.includes("learn") ||
+      content.includes("course")
     ) {
       return "Tutorial";
     } else if (
       content.includes("ui") ||
       content.includes("ux") ||
-      content.includes("design")
+      content.includes("design") ||
+      content.includes("user experience") ||
+      content.includes("interface")
     ) {
       return "UI/UX";
     } else if (
       content.includes("mobile") ||
       content.includes("ios") ||
-      content.includes("android")
+      content.includes("android") ||
+      content.includes("react native") ||
+      content.includes("flutter")
     ) {
       return "Mobile";
     } else if (
       content.includes("devops") ||
       content.includes("deployment") ||
-      content.includes("ci/cd")
+      content.includes("ci/cd") ||
+      content.includes("docker") ||
+      content.includes("kubernetes")
     ) {
       return "DevOps";
     } else if (
       content.includes("programming") ||
       content.includes("coding") ||
-      content.includes("software")
+      content.includes("software") ||
+      content.includes("algorithm") ||
+      content.includes("data structure")
     ) {
       return "Programming";
     } else if (
       content.includes("web") ||
       content.includes("html") ||
-      content.includes("css")
+      content.includes("css") ||
+      content.includes("frontend") ||
+      content.includes("backend")
     ) {
       return "Web Development";
+    } else if (
+      content.includes("business") ||
+      content.includes("management") ||
+      content.includes("strategy") ||
+      content.includes("leadership")
+    ) {
+      return "Business";
+    } else if (
+      content.includes("community") ||
+      content.includes("culture") ||
+      content.includes("social") ||
+      content.includes("collaboration")
+    ) {
+      return "Community";
+    } else if (
+      content.includes("data") ||
+      content.includes("analytics") ||
+      content.includes("visualization") ||
+      content.includes("statistics")
+    ) {
+      return "data";
+    } else if (content.includes("firefox") || content.includes("mozilla")) {
+      return "Firefox";
+    } else if (
+      content.includes("podcast") ||
+      content.includes("audio") ||
+      content.includes("interview")
+    ) {
+      return "podcast";
+    } else if (
+      content.includes("career") ||
+      content.includes("job") ||
+      content.includes("interview") ||
+      content.includes("professional")
+    ) {
+      return "Career";
+    } else if (
+      content.includes("news") ||
+      content.includes("announcement") ||
+      content.includes("update")
+    ) {
+      return "News";
+    } else if (
+      content.includes("opinion") ||
+      content.includes("thoughts") ||
+      content.includes("perspective")
+    ) {
+      return "Opinion";
+    } else if (
+      content.includes("review") ||
+      content.includes("analysis") ||
+      content.includes("comparison")
+    ) {
+      return "Review";
+    } else if (
+      content.includes("stack overflow") ||
+      content.includes("stackoverflow")
+    ) {
+      return "se-stackoverflow";
+    } else if (
+      content.includes("prototype") ||
+      content.includes("rapid") ||
+      content.includes("mvp")
+    ) {
+      return "rapid-prototyping";
+    } else if (
+      content.includes("knowledge") ||
+      content.includes("documentation") ||
+      content.includes("wiki")
+    ) {
+      return "knowledge-management";
+    } else if (
+      content.includes("law") ||
+      content.includes("legal") ||
+      content.includes("policy") ||
+      content.includes("regulation")
+    ) {
+      return "Internet Policy";
+    } else if (
+      content.includes("essay") ||
+      content.includes("opinion") ||
+      content.includes("thought")
+    ) {
+      return "Essays";
+    } else if (
+      content.includes("admin") ||
+      content.includes("administration") ||
+      content.includes("management")
+    ) {
+      return "Administrative";
     } else {
       return "General";
     }
