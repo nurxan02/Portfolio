@@ -11,22 +11,7 @@ class RSSFeedHandler {
       "https://medium.com/feed/javascript-scene",
       "https://blog.mozilla.org/feed/",
       "https://blog.github.com/feed.xml",
-      "https://feeds.feedburner.com/oreilly/radar",
-      "https://www.codesimplicity.com/feed/",
       "https://dev.to/feed",
-      "https://css-tricks.com/feed/",
-      "https://www.smashingmagazine.com/feed/",
-      "https://blog.logrocket.com/feed/",
-      "https://www.freecodecamp.org/news/rss/",
-      "https://martinfowler.com/feed.atom",
-      "https://feeds.feedburner.com/alistapart/main",
-      "https://blog.angular.io/feed",
-      "https://reactjs.org/feed.xml",
-      "https://nodejs.org/en/feed/blog.xml",
-      "https://hackernoon.com/feed",
-      "https://blog.codinghorror.com/rss/",
-      "https://www.paulgraham.com/rss.html",
-      "https://feeds.feedburner.com/tweakers/mixed",
     ];
     this.currentProxyIndex = 0;
     this.currentUrlIndex = 0;
