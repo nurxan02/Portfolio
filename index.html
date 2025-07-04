@@ -210,6 +210,7 @@
     <link rel="stylesheet" href="assets/css/slider.css" />
     <link rel="stylesheet" href="assets/css/form.css" />
     <link rel="stylesheet" href="assets/css/tools.css" />
+    <link rel="stylesheet" href="assets/css/rss.css" />
   </head>
   <body>
     <!-- Skip to main content for accessibility -->
@@ -245,6 +246,7 @@
           <li><a href="#experience">Experience</a></li>
           <li><a href="#projects">Projects</a></li>
           <li><a href="#music">Music</a></li>
+          <li><a href="#rss-feed">Articles</a></li>
           <li><a href="#form">Message</a></li>
           <li><a href="#contact">Contact</a></li>
           <li><a href="social.html">Links</a></li>
@@ -1265,6 +1267,86 @@
           </div>
         </div>
       </section>
+
+      <section id="rss-feed" class="rss-feed">
+        <div class="container">
+          <h2 class="section-title">
+            Tech News & Articles.
+            <span>Latest insights from the tech world</span>
+          </h2>
+
+          <div class="rss-container">
+            <div class="rss-header">
+              <div class="rss-source">
+                <i class="fas fa-rss"></i>
+                <span>Software Development Blogs</span>
+              </div>
+              <div class="rss-status" id="rssStatus">
+                <i class="fas fa-spinner fa-spin"></i>
+                Loading articles...
+              </div>
+            </div>
+
+            <!-- Search and Filter Controls -->
+            <div class="rss-controls">
+              <div class="search-container">
+                <div class="search-input-wrapper">
+                  <i class="fas fa-search search-icon"></i>
+                  <input
+                    type="text"
+                    id="rssSearch"
+                    class="rss-search"
+                    placeholder="Search articles..."
+                  />
+                  <button
+                    class="clear-search"
+                    id="clearRssSearch"
+                    style="display: none"
+                  >
+                    <i class="fas fa-times"></i>
+                  </button>
+                </div>
+              </div>
+
+              <div class="filter-container">
+                <div class="filter-buttons" id="rssFilterButtons">
+                  <!-- Filter buttons will be dynamically generated -->
+                </div>
+              </div>
+            </div>
+
+            <!-- Articles Count Display -->
+            <div class="rss-count">
+              <span id="rssCount">Loading articles...</span>
+            </div>
+
+            <div class="rss-content" id="rssContent">
+              <div class="rss-loading">
+                <div class="loading-spinner">
+                  <i class="fas fa-spinner fa-spin"></i>
+                </div>
+                <p>Fetching latest articles...</p>
+              </div>
+            </div>
+
+            <div class="rss-error" id="rssError" style="display: none">
+              <div class="error-content">
+                <i class="fas fa-exclamation-triangle"></i>
+                <h3>Unable to load articles</h3>
+                <p>
+                  RSS feeds might be temporarily unavailable due to CORS
+                  restrictions or network issues. Please try again later.
+                </p>
+                <button class="retry-btn" onclick="loadRSSFeed()">
+                  <i class="fas fa-redo"></i>
+                  Try Again
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section id="form" class="form-section">
         <div class="form-container">
           <div class="form-header">
@@ -1420,5 +1502,6 @@
     <script src="assets/js/config.js"></script>
     <script src="assets/js/script.js"></script>
     <script src="assets/js/tools.js"></script>
+    <script src="assets/js/rss.js"></script>
   </body>
 </html>
