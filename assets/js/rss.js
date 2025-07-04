@@ -222,6 +222,21 @@ class RSSFeedHandler {
       "AI/ML": "brain",
       ai: "brain",
       data: "chart-bar",
+      ChatGPT: "robot",
+      "Chat GPT": "robot",
+      chatgpt: "robot",
+      OpenAI: "robot",
+      openai: "robot",
+      GPT: "robot",
+      gpt: "robot",
+      "GPT-3": "robot",
+      "GPT-4": "robot",
+      "Large Language Model": "brain",
+      LLM: "brain",
+      "Machine Learning": "brain",
+      "Deep Learning": "brain",
+      "Neural Network": "brain",
+      "Artificial Intelligence": "brain",
 
       // Business & Management
       Business: "briefcase",
@@ -1074,7 +1089,7 @@ class RSSFeedHandler {
 
       // Collect articles from multiple sources
       const allArticles = [];
-      const maxArticlesPerSource = 20; // Maximum articles per RSS source
+      const maxArticlesPerSource = 30; // Maximum articles per RSS source
       const maxTotalArticles = 60; // Maximum total articles
 
       for (
