@@ -646,10 +646,10 @@
   align-items: center;
   gap: 8px;
   padding: 10px 16px;
-  background: #f8f9fa;
-  border: 2px solid #e5e5e5;
+  background: #007aff;
+  border: 2px solid #007aff;
   border-radius: 25px;
-  color: #007aff;
+  color: #ffffff;
   font-size: 13px;
   font-weight: 500;
   cursor: pointer;
@@ -658,8 +658,8 @@
 }
 
 .show-more-categories:hover {
-  background: #007aff;
-  color: white;
+  background: white;
+  color: #007aff;
   border-color: #007aff;
 }
 
