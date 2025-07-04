@@ -1089,7 +1089,7 @@ class RSSFeedHandler {
 
       // Collect articles from multiple sources
       const allArticles = [];
-      const maxArticlesPerSource = 15; // Maximum articles per RSS source
+      const maxArticlesPerSource = 20; // Maximum articles per RSS source
       const maxTotalArticles = 35; // Maximum total articles
 
       for (
