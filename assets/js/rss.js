@@ -8,6 +8,9 @@ class RSSFeedHandler {
     ];
     this.rssUrls = [
       "https://stackoverflow.blog/feed/",
+      "https://medium.com/feed/javascript-scene",
+      "https://blog.mozilla.org/feed/",
+      "https://blog.github.com/feed.xml",
       "https://feeds.feedburner.com/oreilly/radar",
       "https://www.codesimplicity.com/feed/",
       "https://dev.to/feed",
@@ -20,13 +23,10 @@ class RSSFeedHandler {
       "https://blog.angular.io/feed",
       "https://reactjs.org/feed.xml",
       "https://nodejs.org/en/feed/blog.xml",
-      "https://blog.github.com/feed.xml",
-      "https://medium.com/feed/javascript-scene",
       "https://hackernoon.com/feed",
       "https://blog.codinghorror.com/rss/",
       "https://www.paulgraham.com/rss.html",
       "https://feeds.feedburner.com/tweakers/mixed",
-      "https://blog.mozilla.org/feed/",
     ];
     this.currentProxyIndex = 0;
     this.currentUrlIndex = 0;
