@@ -350,14 +350,14 @@
 .dot.active::after {
   content: "";
   position: absolute;
-  top: -68%;
-  left: -68%;
+  /*top: -68%;
+  left: -68%;*/
   width: 24px;
   height: 24px;
   border: 2px solid rgba(255, 255, 255, 0.3);
   border-radius: 50%;
   transform: translate(-50%, -50%);
-  animation: pulse 2s infinite;
+  /*animation: pulse 2s infinite;*/
   box-sizing: border-box;
 }
 .section-title {
