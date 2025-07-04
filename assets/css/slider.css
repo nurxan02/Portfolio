@@ -348,6 +348,7 @@
 }
 
 .dot.active::after {
+  display: none;
   content: "";
   position: absolute;
   /*top: -68%;
