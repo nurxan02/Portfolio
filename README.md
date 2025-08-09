@@ -31,15 +31,3 @@ This project is fully owned by **Nurkhan Masimzada**. No part of it may be copie
 ---
 
 Live at **nurkhanmasimzada.site**
-
-
-[Unit]
-Description=Set WiFi TxPower to 10dBm
-
-[Service]
-Type=oneshot
-ExecStart=/usr/local/bin/set_txpower.sh
-
-[Install]
-WantedBy=multi-user.target
-
