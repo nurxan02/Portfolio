@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nurkhan Masimzada - Programming Support & Development Services</title>
+    <style>
+        /* Reset styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        /* Email-safe fonts */
+        body, table, td, p, a, li, blockquote {
+            -webkit-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+        
+        /* Main container */
+        .email-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Header */
+        .email-header {
+            background: linear-gradient(135deg, #007aff 0%, #005bb5 100%);
+            padding: 40px 30px;
+            text-align: center;
+            color: white;
+        }
+        
+        .logo {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+        }
+        
+        .header-title {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+        
+        .header-subtitle {
+            font-size: 16px;
+            font-weight: 400;
+            opacity: 0.9;
+            line-height: 1.4;
+        }
+        
+        /* Content sections */
+        .email-content {
+            padding: 0;
+        }
+        
+        .section {
+            padding: 40px 30px;
+            border-bottom: 1px solid #f5f5f7;
+        }
+        
+        .section:last-child {
+            border-bottom: none;
+        }
+        
+        .section-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1d1d1f;
+            margin-bottom: 16px;
+            letter-spacing: -0.3px;
+        }
+        
+        .section-text {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #424245;
+            margin-bottom: 20px;
+        }
+        
+        /* Services grid */
+        .services-grid {
+            display: table;
+            width: 100%;
+            margin: 20px 0;
+        }
+        
+        .service-item {
+            display: table-cell;
+            width: 50%;
+            padding: 20px;
+            background: #f9f9fb;
+            border-radius: 12px;
+            margin: 10px;
+            vertical-align: top;
+        }
+        
+        .service-item:first-child {
+            margin-right: 5px;
+        }
+        
+        .service-item:last-child {
+            margin-left: 5px;
+        }
+        
+        .service-icon {
+            font-size: 24px;
+            margin-bottom: 12px;
+            color: #007aff;
+        }
+        
+        .service-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #1d1d1f;
+            margin-bottom: 8px;
+        }
+        
+        .service-description {
+            font-size: 14px;
+            color: #6e6e73;
+            line-height: 1.4;
+        }
+        
+        /* CTA Button */
+        .cta-button {
+            display: inline-block;
+            background: #007aff;
+            color: white;
+            text-decoration: none;
+            padding: 16px 32px;
+            border-radius: 24px;
+            font-weight: 600;
+            font-size: 16px;
+            margin: 20px 0;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 122, 255, 0.3);
+        }
+        
+        .cta-button:hover {
+            background: #005bb5;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 91, 181, 0.4);
+        }
+        
+        /* Tech stack */
+        .tech-stack {
+            display: table;
+            width: 100%;
+            margin: 20px 0;
+        }
+        
+        .tech-item {
+            display: table-cell;
+            text-align: center;
+            padding: 15px 10px;
+            background: #f9f9fb;
+            border-radius: 8px;
+            margin: 5px;
+            width: 20%;
+        }
+        
+        .tech-icon {
+            font-size: 20px;
+            color: #007aff;
+            margin-bottom: 8px;
+        }
+        
+        .tech-name {
+            font-size: 12px;
+            color: #6e6e73;
+            font-weight: 500;
+        }
+        
+        /* Portfolio showcase */
+        .portfolio-item {
+            background: #f9f9fb;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        .portfolio-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #1d1d1f;
+            margin-bottom: 8px;
+        }
+        
+        .portfolio-description {
+            font-size: 14px;
+            color: #6e6e73;
+            line-height: 1.4;
+            margin-bottom: 12px;
+        }
+        
+        .portfolio-link {
+            color: #007aff;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 14px;
+        }
+        
+        /* Contact info */
+        .contact-info {
+            background: #f9f9fb;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        .contact-item {
+            display: table;
+            width: 100%;
+            margin-bottom: 12px;
+        }
+        
+        .contact-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        .contact-icon {
+            display: table-cell;
+            width: 30px;
+            color: #007aff;
+            font-size: 16px;
+            vertical-align: middle;
+        }
+        
+        .contact-text {
+            display: table-cell;
+            color: #424245;
+            font-size: 14px;
+            vertical-align: middle;
+        }
+        
+        .contact-link {
+            color: #007aff;
+            text-decoration: none;
+        }
+        
+        /* Footer */
+        .email-footer {
+            background: #f5f5f7;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .footer-text {
+            font-size: 12px;
+            color: #6e6e73;
+            line-height: 1.4;
+        }
+        
+        .footer-links {
+            margin: 15px 0;
+        }
+        
+        .footer-link {
+            color: #007aff;
+            text-decoration: none;
+            font-size: 12px;
+            margin: 0 10px;
+        }
+        
+        /* Responsive */
+        @media only screen and (max-width: 600px) {
+            .email-container {
+                margin: 0;
+                border-radius: 0;
+            }
+            
+            .section {
+                padding: 30px 20px;
+            }
+            
+            .email-header {
+                padding: 30px 20px;
+            }
+            
+            .header-title {
+                font-size: 24px;
+            }
+            
+            .services-grid {
+                display: block;
+            }
+            
+            .service-item {
+                display: block;
+                width: 100%;
+                margin: 10px 0;
+            }
+            
+            .tech-stack {
+                display: block;
+            }
+            
+            .tech-item {
+                display: inline-block;
+                width: 30%;
+                margin: 5px;
+            }
+        }
+    </style>
+</head>
+<body style="margin: 0; padding: 20px; background: #f5f5f7; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+    <div class="email-container">
+        <!-- Header -->
+        <div class="email-header">
+            <img src="https://nurkhanmasimzada.site/image/logo.png" alt="Nurkhan Masimzada" class="logo">
+            <h1 class="header-title">Nurkhan Masimzada</h1>
+            <p class="header-subtitle">Full-Stack Software Developer<br>Programming Support & Development Services</p>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="email-content">
+            <!-- Introduction -->
+            <div class="section">
+                <h2 class="section-title">Transform Your Ideas into Reality</h2>
+                <p class="section-text">
+                    Hello! I'm Nurkhan Masimzada, a passionate Full-Stack Software Developer based in Warsaw, Poland. 
+                    I specialize in creating scalable, user-focused systems and providing comprehensive programming support 
+                    to help bring your digital visions to life.
+                </p>
+                <p class="section-text">
+                    Whether you're a startup looking to build your first application, an established company needing 
+                    technical expertise, or an individual with a brilliant idea, I'm here to provide the programming 
+                    support you need to succeed.
+                </p>
+            </div>
+            
+            <!-- Services -->
+            <div class="section">
+                <h2 class="section-title">How I Can Help You</h2>
+                <div class="services-grid">
+                    <div class="service-item">
+                        <div class="service-icon">💻</div>
+                        <h3 class="service-title">Full-Stack Development</h3>
+                        <p class="service-description">End-to-end web application development using modern technologies</p>
+                    </div>
+                    <div class="service-item">
+                        <div class="service-icon">🔧</div>
+                        <h3 class="service-title">Technical Consulting</h3>
+                        <p class="service-description">Expert guidance on technology choices and system architecture</p>
+                    </div>
+                </div>
+                <div class="services-grid">
+                    <div class="service-item">
+                        <div class="service-icon">🚀</div>
+                        <h3 class="service-title">Performance Optimization</h3>
+                        <p class="service-description">Improve your existing applications' speed and efficiency</p>
+                    </div>
+                    <div class="service-item">
+                        <div class="service-icon">📱</div>
+                        <h3 class="service-title">Responsive Design</h3>
+                        <p class="service-description">Beautiful, mobile-first interfaces that work on all devices</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Technology Stack -->
+            <div class="section">
+                <h2 class="section-title">My Technical Expertise</h2>
+                <p class="section-text">
+                    I work with cutting-edge technologies to deliver robust, scalable solutions:
+                </p>
+                <div class="tech-stack">
+                    <div class="tech-item">
+                        <div class="tech-icon">⚛️</div>
+                        <div class="tech-name">React.js</div>
+                    </div>
+                    <div class="tech-item">
+                        <div class="tech-icon">🔷</div>
+                        <div class="tech-name">C#</div>
+                    </div>
+                    <div class="tech-item">
+                        <div class="tech-icon">🐍</div>
+                        <div class="tech-name">Python</div>
+                    </div>
+                    <div class="tech-item">
+                        <div class="tech-icon">📜</div>
+                        <div class="tech-name">JavaScript</div>
+                    </div>
+                    <div class="tech-item">
+                        <div class="tech-icon">☁️</div>
+                        <div class="tech-name">AWS</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Portfolio Highlight -->
+            <div class="section">
+                <h2 class="section-title">Recent Success Stories</h2>
+                <div class="portfolio-item">
+                    <h3 class="portfolio-title">🛍️ E-Commerce Platform - Milana Boutique</h3>
+                    <p class="portfolio-description">
+                        Developed a fully deployed eCommerce web application with secure checkout, 
+                        product browsing, and admin dashboard for seamless store management.
+                    </p>
+                    <a href="https://github.com/nurxan02/MilanaBoutique" class="portfolio-link">View Project →</a>
+                </div>
+                
+                <div class="portfolio-item">
+                    <h3 class="portfolio-title">🏥 CRM System - Life Auto Partner</h3>
+                    <p class="portfolio-description">
+                        Built a comprehensive management system for taxi partners, drivers, and vehicles 
+                        with advanced tracking and registration features.
+                    </p>
+                    <a href="https://github.com/nurxan02/crm-life-auto-partner" class="portfolio-link">View Project →</a>
+                </div>
+            </div>
+            
+            <!-- CTA Section -->
+            <div class="section" style="text-align: center;">
+                <h2 class="section-title">Let's Work Together</h2>
+                <p class="section-text">
+                    Ready to bring your project to life? I offer flexible engagement models including 
+                    project-based development, ongoing support, and technical mentoring.
+                </p>
+                <a href="mailto:nmasimzade@outlook.com?subject=Programming Support Inquiry&body=Hi Nurkhan, I'm interested in your programming services. Here's my project idea:" class="cta-button">
+                    Get Programming Support
+                </a>
+                <p style="font-size: 14px; color: #6e6e73; margin-top: 15px;">
+                    Or visit my portfolio: <a href="https://nurkhanmasimzada.site" style="color: #007aff;">nurkhanmasimzada.site</a>
+                </p>
+            </div>
+            
+            <!-- Contact Information -->
+            <div class="section">
+                <h2 class="section-title">Get In Touch</h2>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">📧</div>
+                        <div class="contact-text">
+                            <a href="mailto:nmasimzade@outlook.com" class="contact-link">nmasimzade@outlook.com</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📱</div>
+                        <div class="contact-text">
+                            <a href="tel:+48573403395" class="contact-link">+48 573 403 395</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">🌍</div>
+                        <div class="contact-text">Warsaw, Poland</div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">💼</div>
+                        <div class="contact-text">
+                            <a href="https://www.linkedin.com/in/nurxanmasimzade/" class="contact-link">LinkedIn Profile</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <div class="email-footer">
+            <p class="footer-text">
+                © 2025 Nurkhan Masimzada. All rights reserved.<br>
+                Professional Full-Stack Development Services
+            </p>
+            <div class="footer-links">
+                <a href="https://nurkhanmasimzada.site" class="footer-link">Portfolio</a>
+                <a href="https://github.com/nurxan02" class="footer-link">GitHub</a>
+                <a href="https://www.linkedin.com/in/nurxanmasimzade/" class="footer-link">LinkedIn</a>
+                <a href="mailto:nmasimzade@outlook.com" class="footer-link">Contact</a>
+            </div>
+            <p class="footer-text">
+                You received this email because you're interested in professional programming services.<br>
+                <a href="#" style="color: #6e6e73; font-size: 11px;">Unsubscribe</a>
+            </p>
+        </div>
+    </div>
+</body>
+</html>
