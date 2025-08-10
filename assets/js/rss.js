@@ -8,10 +8,8 @@ class RSSFeedHandler {
     ];
     this.rssUrls = [
       "https://stackoverflow.blog/feed/",
-      "https://medium.com/feed/javascript-scene",
-      "https://blog.mozilla.org/feed/",
-      "https://blog.github.com/feed.xml",
       "https://dev.to/feed",
+      "https://yusufipek.me/rss",
     ];
     this.currentProxyIndex = 0;
     this.currentUrlIndex = 0;
